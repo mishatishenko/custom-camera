@@ -11,9 +11,9 @@
 #import "CCPreviewLayer.h"
 #import "CCSession.h"
 
-CCPreviewLayerGravity CCPreviewLayerGravityResize = @"resize";
-CCPreviewLayerGravity CCPreviewLayerGravityResizeAspect = @"resizeAspect";
-CCPreviewLayerGravity CCPreviewLayerGravityResizeAspectFill = @"resizeAspectFill";
+const CCPreviewLayerGravity CCPreviewLayerGravityResize = @"resize";
+const CCPreviewLayerGravity CCPreviewLayerGravityResizeAspect = @"resizeAspect";
+const CCPreviewLayerGravity CCPreviewLayerGravityResizeAspectFill = @"resizeAspectFill";
 
 @interface CCPreviewLayer ()
 
@@ -28,6 +28,8 @@ CCPreviewLayerGravity CCPreviewLayerGravityResizeAspectFill = @"resizeAspectFill
 @end
 
 @implementation CCPreviewLayer
+
+@synthesize videoGravity = _videoGravity;
 
 - (instancetype)init
 {

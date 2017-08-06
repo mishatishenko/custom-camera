@@ -17,5 +17,6 @@ FOUNDATION_EXPORT const unsigned char CustomCameraVersionString[];
 #import <CustomCamera/CCSession.h>
 #import <CustomCamera/CCPreviewLayer.h>
 #import <CustomCamera/CCFilter.h>
+#import <CustomCamera/CCError.h>
 
 

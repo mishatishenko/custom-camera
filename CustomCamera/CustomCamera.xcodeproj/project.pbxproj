@@ -9,13 +9,13 @@
 /* Begin PBXBuildFile section */
 		CAE34AA81F0FBDD000DECDD6 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAE34AA71F0FBDD000DECDD6 /* AVFoundation.framework */; };
 		CAE34AAE1F0FBE0E00DECDD6 /* CustomCamera.h in Headers */ = {isa = PBXBuildFile; fileRef = CAE34AAB1F0FBE0E00DECDD6 /* CustomCamera.h */; };
-		CAE34AAF1F0FBE0E00DECDD6 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CAE34AAD1F0FBE0E00DECDD6 /* Info.plist */; };
 		CAE34AB31F0FBEB100DECDD6 /* CCSession.m in Sources */ = {isa = PBXBuildFile; fileRef = CAE34AB11F0FBEB100DECDD6 /* CCSession.m */; };
 		CAE34AB71F0FBEC800DECDD6 /* CCPreviewLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = CAE34AB51F0FBEC800DECDD6 /* CCPreviewLayer.m */; };
 		CAE34ABB1F0FBF0E00DECDD6 /* CCFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = CAE34AB91F0FBF0E00DECDD6 /* CCFilter.m */; };
 		CAE34ABF1F0FBF6400DECDD6 /* CCFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = CAE34ABC1F0FBF6400DECDD6 /* CCFilter.h */; };
 		CAE34AC01F0FBF6400DECDD6 /* CCPreviewLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = CAE34ABD1F0FBF6400DECDD6 /* CCPreviewLayer.h */; };
 		CAE34AC11F0FBF6400DECDD6 /* CCSession.h in Headers */ = {isa = PBXBuildFile; fileRef = CAE34ABE1F0FBF6400DECDD6 /* CCSession.h */; };
+		CAE34AC31F0FCC8000DECDD6 /* CCError.h in Headers */ = {isa = PBXBuildFile; fileRef = CAE34AC21F0FCB0E00DECDD6 /* CCError.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +29,7 @@
 		CAE34ABC1F0FBF6400DECDD6 /* CCFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCFilter.h; sourceTree = "<group>"; };
 		CAE34ABD1F0FBF6400DECDD6 /* CCPreviewLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCPreviewLayer.h; sourceTree = "<group>"; };
 		CAE34ABE1F0FBF6400DECDD6 /* CCSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCSession.h; sourceTree = "<group>"; };
+		CAE34AC21F0FCB0E00DECDD6 /* CCError.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCError.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +89,7 @@
 				CAE34ABD1F0FBF6400DECDD6 /* CCPreviewLayer.h */,
 				CAE34ABE1F0FBF6400DECDD6 /* CCSession.h */,
 				CAE34AAB1F0FBE0E00DECDD6 /* CustomCamera.h */,
+				CAE34AC21F0FCB0E00DECDD6 /* CCError.h */,
 			);
 			name = PublicHaders;
 			path = CustomCamera/PublicHaders;
@@ -113,6 +115,7 @@
 				CAE34AAE1F0FBE0E00DECDD6 /* CustomCamera.h in Headers */,
 				CAE34AC01F0FBF6400DECDD6 /* CCPreviewLayer.h in Headers */,
 				CAE34AC11F0FBF6400DECDD6 /* CCSession.h in Headers */,
+				CAE34AC31F0FCC8000DECDD6 /* CCError.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -175,7 +178,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CAE34AAF1F0FBE0E00DECDD6 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

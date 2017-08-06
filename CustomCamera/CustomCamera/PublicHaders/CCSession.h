@@ -12,19 +12,24 @@
 @class CCFilter;
 @class CCPreviewLayer;
 
-typedef const NSString * CCAccessToCamera NS_EXTENSIBLE_STRING_ENUM;
-extern CCAccessToCamera CCAccessToCameraAllowed;
-extern CCAccessToCamera CCAccessToCameraDenied;
-extern CCAccessToCamera CCAccessToCameraNotDetermined;
+typedef NSString * CCAccessToCamera NS_EXTENSIBLE_STRING_ENUM;
+extern const CCAccessToCamera CCAccessToCameraAllowed;
+extern const CCAccessToCamera CCAccessToCameraDenied;
 
-typedef const NSString * CCCameraLightMode NS_EXTENSIBLE_STRING_ENUM;
-extern CCCameraLightMode CCCameraLightModeFlash;
-extern CCCameraLightMode CCCameraLightModeTorch;
-extern CCCameraLightMode CCCameraLightModeOff;
+typedef NSString * CCCameraLightMode NS_EXTENSIBLE_STRING_ENUM;
+extern const CCCameraLightMode CCCameraLightModeFlash;
+extern const CCCameraLightMode CCCameraLightModeTorch;
+extern const CCCameraLightMode CCCameraLightModeOff;
 
-typedef const NSString * CCCameraDirection NS_EXTENSIBLE_STRING_ENUM;
-extern CCCameraDirection CCCameraDirectionFront;
-extern CCCameraDirection CCCameraDirectionBack;
+typedef NSString * CCCameraDirection NS_EXTENSIBLE_STRING_ENUM;
+extern const CCCameraDirection CCCameraDirectionFront;
+extern const CCCameraDirection CCCameraDirectionBack;
+
+typedef NSString * CCSessionPreset NS_EXTENSIBLE_STRING_ENUM;
+extern const CCSessionPreset CCSessionPresetHigh;
+extern const CCSessionPreset CCSessionPresetNormal;
+extern const CCSessionPreset CCSessionPresetLow;
+extern const CCSessionPreset CCSessionPresetPhoto;
 
 @interface CCSession : NSObject
 
@@ -36,6 +41,10 @@ extern CCCameraDirection CCCameraDirectionBack;
 
 - (void)requestAccessToCameraWithCompletion:(void (^)(CCAccessToCamera access))completion;
 
+@property (nonatomic, strong) CCSessionPreset preset;
+- (BOOL)canApplyPreset:(CCSessionPreset)preset;
+
+@property (nonatomic, readonly, getter=isStarted) BOOL started;
 - (void)start;
 - (void)stop;
 

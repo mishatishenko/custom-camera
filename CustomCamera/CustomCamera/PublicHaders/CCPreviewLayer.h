@@ -8,10 +8,10 @@
 
 @import Foundation;
 
-typedef const NSString * CCPreviewLayerGravity NS_EXTENSIBLE_STRING_ENUM;
-extern CCPreviewLayerGravity CCPreviewLayerGravityResize;
-extern CCPreviewLayerGravity CCPreviewLayerGravityResizeAspect;
-extern CCPreviewLayerGravity CCPreviewLayerGravityResizeAspectFill;
+typedef NSString * CCPreviewLayerGravity NS_EXTENSIBLE_STRING_ENUM;
+extern const CCPreviewLayerGravity CCPreviewLayerGravityResize;
+extern const CCPreviewLayerGravity CCPreviewLayerGravityResizeAspect;
+extern const CCPreviewLayerGravity CCPreviewLayerGravityResizeAspectFill;
 
 @interface CCPreviewLayer : NSObject
 
@@ -23,6 +23,6 @@ extern CCPreviewLayerGravity CCPreviewLayerGravityResizeAspectFill;
  @discussion
     Options are CCPreviewLayerGravityResize, CCPreviewLayerGravityResizeAspect and CCPreviewLayerGravityResizeAspectFill. CCPreviewLayerGravityResizeAspect is default.
  */
-@property(nonatomic, copy) CCPreviewLayerGravity videoGravity;
+@property (nonatomic, strong) CCPreviewLayerGravity videoGravity;
 
 @end
