@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@class PhotoStorage;
 
+@interface MapViewController : UIViewController
+
+@property (nonatomic, readonly) PhotoStorage *photoStorage;
 
 @end
 

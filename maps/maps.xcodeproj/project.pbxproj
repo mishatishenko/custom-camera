@@ -12,8 +12,11 @@
 		CA0990CB1F1598500085759A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA0990C01F1598500085759A /* Main.storyboard */; };
 		CA0990CD1F1598500085759A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0990C51F1598500085759A /* AppDelegate.m */; };
 		CA0990CE1F1598500085759A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0990C61F1598500085759A /* main.m */; };
-		CA0990CF1F1598500085759A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0990C81F1598500085759A /* ViewController.m */; };
 		CA0990D21F1598A50085759A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA0990D11F1598A50085759A /* MapKit.framework */; };
+		CACBFDD91F471DB500B66330 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CACBFDD61F471DB500B66330 /* MapViewController.m */; };
+		CACBFDDB1F471DFF00B66330 /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CACBFDDA1F471DFF00B66330 /* Photos.framework */; };
+		CACBFDDE1F471E3B00B66330 /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = CACBFDDD1F471E3B00B66330 /* Photo.m */; };
+		CACBFDE11F471E4D00B66330 /* PhotoStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = CACBFDE01F471E4D00B66330 /* PhotoStorage.m */; };
 		F3E9780855B3DDB249D3980D /* libPods-maps.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E2ED2EB66EAD49B96198634C /* libPods-maps.a */; };
 /* End PBXBuildFile section */
 
@@ -28,9 +31,15 @@
 		CA0990C41F1598500085759A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		CA0990C51F1598500085759A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		CA0990C61F1598500085759A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		CA0990C71F1598500085759A /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		CA0990C81F1598500085759A /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		CA0990D11F1598A50085759A /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		CACBFDD51F471DB500B66330 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		CACBFDD61F471DB500B66330 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		CACBFDDA1F471DFF00B66330 /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
+		CACBFDDC1F471E3B00B66330 /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Photo.h; sourceTree = "<group>"; };
+		CACBFDDD1F471E3B00B66330 /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Photo.m; sourceTree = "<group>"; };
+		CACBFDDF1F471E4D00B66330 /* PhotoStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoStorage.h; sourceTree = "<group>"; };
+		CACBFDE01F471E4D00B66330 /* PhotoStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoStorage.m; sourceTree = "<group>"; };
+		CACBFDE31F4721ED00B66330 /* Configuration.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Configuration.xcconfig; sourceTree = "<group>"; };
 		E2ED2EB66EAD49B96198634C /* libPods-maps.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-maps.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -39,6 +48,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CACBFDDB1F471DFF00B66330 /* Photos.framework in Frameworks */,
 				CA0990D21F1598A50085759A /* MapKit.framework in Frameworks */,
 				F3E9780855B3DDB249D3980D /* libPods-maps.a in Frameworks */,
 			);
@@ -77,6 +87,7 @@
 		CA0990A41F1598090085759A /* maps */ = {
 			isa = PBXGroup;
 			children = (
+				CACBFDE21F4721DB00B66330 /* Configuration */,
 				CA0990BC1F1598500085759A /* Resources */,
 				CA0990C31F1598500085759A /* Sources */,
 			);
@@ -97,11 +108,12 @@
 		CA0990C31F1598500085759A /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				CACBFDD41F471DB500B66330 /* MapController */,
+				CACBFDD71F471DB500B66330 /* PhotoStorage */,
+				CACBFDD81F471DB500B66330 /* Utils */,
 				CA0990C41F1598500085759A /* AppDelegate.h */,
 				CA0990C51F1598500085759A /* AppDelegate.m */,
 				CA0990C61F1598500085759A /* main.m */,
-				CA0990C71F1598500085759A /* ViewController.h */,
-				CA0990C81F1598500085759A /* ViewController.m */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -109,10 +121,46 @@
 		CA0990D01F1598A50085759A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CACBFDDA1F471DFF00B66330 /* Photos.framework */,
 				CA0990D11F1598A50085759A /* MapKit.framework */,
 				E2ED2EB66EAD49B96198634C /* libPods-maps.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CACBFDD41F471DB500B66330 /* MapController */ = {
+			isa = PBXGroup;
+			children = (
+				CACBFDD51F471DB500B66330 /* MapViewController.h */,
+				CACBFDD61F471DB500B66330 /* MapViewController.m */,
+			);
+			path = MapController;
+			sourceTree = "<group>";
+		};
+		CACBFDD71F471DB500B66330 /* PhotoStorage */ = {
+			isa = PBXGroup;
+			children = (
+				CACBFDDC1F471E3B00B66330 /* Photo.h */,
+				CACBFDDD1F471E3B00B66330 /* Photo.m */,
+				CACBFDDF1F471E4D00B66330 /* PhotoStorage.h */,
+				CACBFDE01F471E4D00B66330 /* PhotoStorage.m */,
+			);
+			path = PhotoStorage;
+			sourceTree = "<group>";
+		};
+		CACBFDD81F471DB500B66330 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		CACBFDE21F4721DB00B66330 /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				CACBFDE31F4721ED00B66330 /* Configuration.xcconfig */,
+			);
+			path = Configuration;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -243,8 +291,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CA0990CF1F1598500085759A /* ViewController.m in Sources */,
+				CACBFDDE1F471E3B00B66330 /* Photo.m in Sources */,
+				CACBFDD91F471DB500B66330 /* MapViewController.m in Sources */,
 				CA0990CE1F1598500085759A /* main.m in Sources */,
+				CACBFDE11F471E4D00B66330 /* PhotoStorage.m in Sources */,
 				CA0990CD1F1598500085759A /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -273,6 +323,7 @@
 /* Begin XCBuildConfiguration section */
 		CA0990B71F1598090085759A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CACBFDE31F4721ED00B66330 /* Configuration.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -321,6 +372,7 @@
 		};
 		CA0990B81F1598090085759A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CACBFDE31F4721ED00B66330 /* Configuration.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
