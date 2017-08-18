@@ -14,6 +14,9 @@
 @interface Photo : NSObject
 
 @property (nonatomic, readonly) PHAsset *asset;
+@property (atomic, readonly) UIImage *thumbnail;
+
 - (instancetype)initWithAsset:(PHAsset *)asset;
+- (void)updateThumbnail:(UIImage *)thumbnail;
 
 @end

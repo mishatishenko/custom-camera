@@ -110,7 +110,19 @@
 				{
 					@synchronized(self)
 					{
-						[self.mutablePhotos addObject:[[Photo alloc] initWithAsset:obj]];
+						Photo *photo = [[Photo alloc] initWithAsset:obj];
+						[self.mutablePhotos addObject:photo];
+						
+						[[PHImageManager defaultManager] requestImageForAsset:obj
+									targetSize:CGSizeMake(40, 40)
+									contentMode:PHImageContentModeAspectFill options:nil
+									resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info)
+						{
+							if (nil != result)
+							{
+								[photo updateThumbnail:result];
+							}
+						}];
 					}
 				}];
 				

@@ -11,6 +11,7 @@
 @interface Photo ()
 
 @property (nonatomic, strong) PHAsset *asset;
+@property (atomic, strong) UIImage *thumbnail;
 
 @end
 
@@ -24,6 +25,11 @@
 	}
 	
 	return self;
+}
+
+- (void)updateThumbnail:(UIImage *)thumbnail
+{
+	self.thumbnail = [thumbnail copy];
 }
 
 @end

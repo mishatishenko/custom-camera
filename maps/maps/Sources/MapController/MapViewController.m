@@ -23,6 +23,8 @@
 	[super viewDidLoad];
 	
 	self.photoStorage = [PhotoStorage new];
+	self.photoStorage.observer = self;
+	
 	[self.photoStorage setupWithCompletion:^(NSError *error)
 	{
 		if (nil == error)
