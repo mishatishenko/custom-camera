@@ -48,7 +48,10 @@
 
 - (void)presentInfo
 {
-
+	[self.navigationController pushViewController:
+				[[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]]
+				instantiateViewControllerWithIdentifier:@"infoViewController"]
+				animated:YES];
 }
 
 #pragma mark - UITableViewDelegate
