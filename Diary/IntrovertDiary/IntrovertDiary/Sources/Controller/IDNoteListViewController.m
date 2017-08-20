@@ -13,7 +13,8 @@
 #import "NSDateAdditions.h"
 #import "IDNoteViewController.h"
 
-@interface IDNoteListViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface IDNoteListViewController () <UITableViewDelegate,
+			UITableViewDataSource, IDNoteStorageObserver>
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSArray<IDNote *> *notes;
@@ -22,9 +23,16 @@
 
 @implementation IDNoteListViewController
 
+- (void)dealloc
+{
+	[[IDNoteStorage sharedStorage] removeObserver:self];
+}
+
 - (void)viewDidLoad
 {
 	[super viewDidLoad];
+	
+	[[IDNoteStorage sharedStorage] addObserver:self];
 
 	self.tableView.delegate = self;
 	self.tableView.dataSource = self;
@@ -90,10 +98,8 @@
 	
 	cell.noteLabel.text = note.text;
 	cell.dateLabel.text = [note.creationDate localizableDate];
-	cell.noteImageView.image = nil != note.picture ? note.picture : [UIImage imageNamed:@"image"];
-	cell.noteImageView.contentMode = UIViewContentModeCenter;
-	cell.noteImageView.translatesAutoresizingMaskIntoConstraints = NO;
-	[cell.noteImageView sizeToFit];
+	cell.noteImageView.image = nil != note.picture ?
+				note.picture : [UIImage imageNamed:@"image"];
 	
 	return cell;
 }
@@ -101,6 +107,37 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	return 92;
+}
+
+#pragma mark - IDNoteStorageObserver
+
+- (void)noteStorage:(IDNoteStorage *)sender didDeleteNote:(IDNote *)note
+{
+	[self.tableView beginUpdates];
+	[self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath
+				indexPathForRow:[self.notes indexOfObject:note] inSection:0]]
+				withRowAnimation:UITableViewRowAnimationLeft];
+	self.notes = [NSArray arrayWithArray:[[IDNoteStorage sharedStorage] notes]];
+	[self.tableView endUpdates];
+	
+	[self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)noteStorage:(IDNoteStorage *)sender didAddNote:(IDNote *)note
+{
+	self.notes = [NSArray arrayWithArray:[[IDNoteStorage sharedStorage] notes]];
+	
+	[self.tableView reloadData];
+}
+
+- (void)noteStorage:(IDNoteStorage *)sender didUpdateNote:(IDNote *)note
+{
+	[self.tableView beginUpdates];
+	[self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath
+				indexPathForRow:[self.notes indexOfObject:note] inSection:0]]
+				withRowAnimation:UITableViewRowAnimationFade];
+	self.notes = [NSArray arrayWithArray:[[IDNoteStorage sharedStorage] notes]];
+	[self.tableView endUpdates];
 }
 
 @end

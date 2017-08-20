@@ -23,3 +23,7 @@
 "cDecember" = "Декабрь";
 
 "cTellAboutYourDay" = "Напишите о своем дне здесь…";
+"cAttention" = "Внимание!";
+"cDeleteConfirmation" = "Вы действительно хотите удалить записи о сегодняшнем дне?";
+"cCancel" = "Нет";
+"cOk" = "Да";

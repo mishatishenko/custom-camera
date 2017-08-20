@@ -23,3 +23,7 @@
 "cDecember" = "December";
 
 "cTellAboutYourDay" = "Tell about your day here…";
+"cAttention" = "Attention!";
+"cDeleteConfirmation" = "Are you sure you want to delete the memories of today?";
+"cCancel" = "Cancel";
+"cOk" = "Ok";

@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @class IDNote;
+@protocol IDNoteStorageObserver;
 
 @interface IDNoteStorage : NSObject
 
@@ -16,7 +17,19 @@
 
 @property (nonatomic, readonly) NSArray<IDNote *> *notes;
 
+- (void)addObserver:(id<IDNoteStorageObserver>)delegate;
+- (void)removeObserver:(id<IDNoteStorageObserver>)delegate;
+
 - (void)saveNote:(IDNote *)note;
 - (void)removeNote:(IDNote *)note;
+
+@end
+
+@protocol IDNoteStorageObserver <NSObject>
+
+@optional
+- (void)noteStorage:(IDNoteStorage *)sender didDeleteNote:(IDNote *)note;
+- (void)noteStorage:(IDNoteStorage *)sender didAddNote:(IDNote *)note;
+- (void)noteStorage:(IDNoteStorage *)sender didUpdateNote:(IDNote *)note;
 
 @end

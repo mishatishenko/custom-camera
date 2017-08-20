@@ -8,6 +8,7 @@
 
 #import "IDNoteViewController.h"
 #import "IDNote.h"
+#import "IDNoteStorage.h"
 #import "NSDateAdditions.h"
 
 @interface IDNoteViewController ()
@@ -21,6 +22,8 @@
 @property (nonatomic) BOOL editMode;
 
 @property (nonatomic, strong) IDNote *note;
+@property (nonatomic, strong) NSString *text;
+@property (nonatomic, strong) UIImage *image;
 
 @end
 
@@ -85,7 +88,7 @@
 	[deleteButton setImage:[UIImage imageNamed:@"delete"]
 				forState:UIControlStateNormal];
 	[deleteButton sizeToFit];
-	[deleteButton addTarget:self action:@selector(deleteNote)
+	[deleteButton addTarget:self action:@selector(showDeleteNoteConfirmation)
 				forControlEvents:UIControlEventTouchUpInside];
 	deleteButton.exclusiveTouch = YES;
 	
@@ -136,6 +139,10 @@
 - (void)doneEditing
 {
 	[self turnEditMode:NO];
+	self.note.picture = self.image;
+	self.note.text = self.text;
+	
+	[[IDNoteStorage sharedStorage] saveNote:self.note];
 }
 
 - (void)enableEditMode
@@ -143,9 +150,29 @@
 	[self turnEditMode:YES];
 }
 
+- (void)showDeleteNoteConfirmation
+{
+	UIAlertController *alert = [UIAlertController alertControllerWithTitle:
+				NSLocalizedString(@"cAttention", @"") message:
+				NSLocalizedString(@"cDeleteConfirmation", @"")
+				preferredStyle:UIAlertControllerStyleAlert];
+	[alert addAction:[UIAlertAction actionWithTitle:
+				NSLocalizedString(@"cCancel", @"") style:UIAlertActionStyleDefault
+				handler:nil]];
+	
+	[alert addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"cOk", @"")
+				style:UIAlertActionStyleDefault handler:
+	^(UIAlertAction * _Nonnull action)
+	{
+		[self deleteNote];
+	}]];
+	
+	[self presentViewController:alert animated:YES completion:nil];
+}
+
 - (void)deleteNote
 {
-
+	[[IDNoteStorage sharedStorage] removeNote:self.note];
 }
 
 - (void)shareNote
