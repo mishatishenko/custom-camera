@@ -24,6 +24,8 @@
 		CACBFE531F4A17D200B66330 /* IDNoteStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = CACBFE521F4A17D200B66330 /* IDNoteStorage.m */; };
 		CACBFE581F4A29E700B66330 /* NSDateAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = CACBFE571F4A29E700B66330 /* NSDateAdditions.m */; };
 		CACBFE5B1F4A2DCB00B66330 /* IDNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CACBFE5A1F4A2DCB00B66330 /* IDNoteViewController.m */; };
+		CACBFE5E1F4A4C3800B66330 /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CACBFE5D1F4A4C3800B66330 /* Photos.framework */; };
+		CACBFE651F4A50DE00B66330 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CACBFE671F4A50DE00B66330 /* InfoPlist.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,7 +37,6 @@
 		CACBFE161F49C1D400B66330 /* IDAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDAppDelegate.m; sourceTree = "<group>"; };
 		CACBFE171F49C1D400B66330 /* IDNoteListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDNoteListViewController.h; sourceTree = "<group>"; };
 		CACBFE181F49C1D400B66330 /* IDNoteListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDNoteListViewController.m; sourceTree = "<group>"; };
-		CACBFE1B1F49C1D400B66330 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CACBFE1C1F49C1D400B66330 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CACBFE251F49F15D00B66330 /* IDNoteTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDNoteTableViewCell.h; sourceTree = "<group>"; };
 		CACBFE261F49F15D00B66330 /* IDNoteTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDNoteTableViewCell.m; sourceTree = "<group>"; };
@@ -60,6 +61,11 @@
 		CACBFE571F4A29E700B66330 /* NSDateAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDateAdditions.m; sourceTree = "<group>"; };
 		CACBFE591F4A2DCB00B66330 /* IDNoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDNoteViewController.h; sourceTree = "<group>"; };
 		CACBFE5A1F4A2DCB00B66330 /* IDNoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDNoteViewController.m; sourceTree = "<group>"; };
+		CACBFE5D1F4A4C3800B66330 /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
+		CACBFE661F4A50DE00B66330 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		CACBFE681F4A50E000B66330 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		CACBFE691F4A50E100B66330 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		CACBFE6A1F4A515A00B66330 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CACBFE5E1F4A4C3800B66330 /* Photos.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +85,7 @@
 			children = (
 				CACBFDF51F49C10600B66330 /* IntrovertDiary */,
 				CACBFDF41F49C10600B66330 /* Products */,
+				CACBFE5C1F4A4C3800B66330 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -107,6 +115,7 @@
 				CACBFE0F1F49C1D400B66330 /* LaunchScreen.storyboard */,
 				CACBFE111F49C1D400B66330 /* Main.storyboard */,
 				CACBFE421F4A078500B66330 /* Localizable.strings */,
+				CACBFE671F4A50DE00B66330 /* InfoPlist.strings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -152,7 +161,7 @@
 		CACBFE1A1F49C1D400B66330 /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
-				CACBFE1B1F49C1D400B66330 /* Info.plist */,
+				CACBFE6A1F4A515A00B66330 /* Info.plist */,
 				CACBFE1C1F49C1D400B66330 /* main.m */,
 			);
 			path = SupportingFiles;
@@ -185,6 +194,14 @@
 				CACBFE571F4A29E700B66330 /* NSDateAdditions.m */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		CACBFE5C1F4A4C3800B66330 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CACBFE5D1F4A4C3800B66330 /* Photos.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -249,6 +266,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CACBFE201F49C1D400B66330 /* Main.storyboard in Resources */,
+				CACBFE651F4A50DE00B66330 /* InfoPlist.strings in Resources */,
 				CACBFE1E1F49C1D400B66330 /* Assets.xcassets in Resources */,
 				CACBFE341F49F94800B66330 /* SF-UI-Display-Regular.otf in Resources */,
 				CACBFE401F4A078500B66330 /* Localizable.strings in Resources */,
@@ -308,6 +326,16 @@
 				CACBFE441F4A07E800B66330 /* uk */,
 			);
 			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		CACBFE671F4A50DE00B66330 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CACBFE661F4A50DE00B66330 /* en */,
+				CACBFE681F4A50E000B66330 /* ru */,
+				CACBFE691F4A50E100B66330 /* uk */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

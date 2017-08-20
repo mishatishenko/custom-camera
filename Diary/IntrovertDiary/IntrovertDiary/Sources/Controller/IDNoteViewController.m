@@ -10,8 +10,10 @@
 #import "IDNote.h"
 #import "IDNoteStorage.h"
 #import "NSDateAdditions.h"
+#import <Photos/Photos.h>
 
-@interface IDNoteViewController ()
+@interface IDNoteViewController () <UIImagePickerControllerDelegate,
+			UINavigationControllerDelegate>
 
 @property (strong, nonatomic) IBOutlet UIImageView *imageView;
 @property (strong, nonatomic) IBOutlet UILabel *dateLabel;
@@ -64,8 +66,10 @@
 				CGRectGetWidth(self.navigationController.view.frame) - 32;
 	
 	self.imageView.image = self.note.picture;
+	self.image = self.note.picture;
 	
 	self.dateLabel.text = [self.note.creationDate localizableDate];
+	self.text = self.note.text;
 	
 	self.noteTextView.text = nil != self.note.text ? self.note.text :
 				NSLocalizedString(@"cTellAboutYourDay", @"");
@@ -112,7 +116,7 @@
 	self.editMode = enableEditMode;
 	
 	self.changePictureButton.userInteractionEnabled = enableEditMode;
-	self.changePictureButton.hidden = !enableEditMode && nil != self.note.picture;
+	self.changePictureButton.hidden = !enableEditMode && nil != self.image;
 	self.noteTextView.userInteractionEnabled = enableEditMode;
 	
 	[self.navigationController setToolbarHidden:enableEditMode animated:YES];
@@ -139,10 +143,23 @@
 - (void)doneEditing
 {
 	[self turnEditMode:NO];
-	self.note.picture = self.image;
-	self.note.text = self.text;
 	
-	[[IDNoteStorage sharedStorage] saveNote:self.note];
+	BOOL noteIsEdited = NO;
+	if (![self.image isEqual:self.note.picture])
+	{
+		noteIsEdited = YES;
+		self.note.picture = self.image;
+	}
+	if (![self.note.text isEqualToString:self.text])
+	{
+		noteIsEdited = YES;
+		self.note.text = self.text;
+	}
+	
+	if (noteIsEdited)
+	{
+		[[IDNoteStorage sharedStorage] saveNote:self.note];
+	}
 }
 
 - (void)enableEditMode
@@ -182,6 +199,46 @@
 
 - (IBAction)changePicture:(UIButton *)sender
 {
+	[PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status)
+	{
+		if (status == PHAuthorizationStatusAuthorized)
+		{
+			UIImagePickerController *picker = [UIImagePickerController new];
+			picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+			picker.delegate = self;
+			[self presentViewController:picker animated:YES completion:nil];
+		}
+		else
+		{
+			UIAlertController *alert = [UIAlertController alertControllerWithTitle:
+						NSLocalizedString(@"cError", @"") message:
+						NSLocalizedString(@"cNoAccessToPhotos", @"")
+						preferredStyle:UIAlertControllerStyleAlert];
+			
+			[alert addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"cOk", @"")
+						style:UIAlertActionStyleDefault handler:nil]];
+			
+			[self presentViewController:alert animated:YES completion:nil];
+		}
+	}];
+}
+
+#pragma mark - UIImagePicker delegate
+
+- (void)imagePickerController:(UIImagePickerController *)picker
+			didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
+{
+	if (nil != info[UIImagePickerControllerOriginalImage])
+	{
+		self.image = info[UIImagePickerControllerOriginalImage];
+		self.imageView.image = self.image;
+	}
+	[self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+	[self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

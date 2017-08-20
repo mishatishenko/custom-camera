@@ -27,3 +27,5 @@
 "cDeleteConfirmation" = "Are you sure you want to delete the memories of today?";
 "cCancel" = "Cancel";
 "cOk" = "Ok";
+"cError" = "Error";
+"cNoAccessToPhotos" = "The application has not access to Camera Roll. Please, enable access at Privacy Settings.";
