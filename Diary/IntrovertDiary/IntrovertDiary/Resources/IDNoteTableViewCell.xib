@@ -29,17 +29,16 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image" translatesAutoresizingMaskIntoConstraints="NO" id="mCA-w0-06b">
                                 <rect key="frame" x="-0.5" y="-0.5" width="60" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="60" id="JvO-XX-tQX"/>
-                                    <constraint firstAttribute="height" constant="60" id="Mdp-Zr-GBp"/>
-                                </constraints>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="mCA-w0-06b" firstAttribute="centerY" secondItem="FHB-Vf-HkY" secondAttribute="centerY" id="Ffn-kC-GA2"/>
+                            <constraint firstItem="mCA-w0-06b" firstAttribute="width" secondItem="FHB-Vf-HkY" secondAttribute="width" id="1sl-hl-ocb"/>
+                            <constraint firstItem="mCA-w0-06b" firstAttribute="leading" secondItem="FHB-Vf-HkY" secondAttribute="leading" id="411-dr-SyD"/>
                             <constraint firstAttribute="height" constant="60" id="LZR-L0-0Xs"/>
-                            <constraint firstItem="mCA-w0-06b" firstAttribute="centerX" secondItem="FHB-Vf-HkY" secondAttribute="centerX" id="yqd-Le-TH7"/>
+                            <constraint firstItem="mCA-w0-06b" firstAttribute="height" secondItem="FHB-Vf-HkY" secondAttribute="height" id="Uyb-lV-2Do"/>
+                            <constraint firstItem="mCA-w0-06b" firstAttribute="top" secondItem="FHB-Vf-HkY" secondAttribute="top" id="eYa-sh-EiZ"/>
                             <constraint firstAttribute="width" constant="60" id="yte-qh-HBA"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
@@ -77,7 +76,6 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="dateLabel" destination="WKZ-C6-2rK" id="fwI-vp-XjU"/>
-                <outlet property="imageView" destination="mCA-w0-06b" id="3uU-XL-qYV"/>
                 <outlet property="noteImageView" destination="mCA-w0-06b" id="027-KQ-vGc"/>
                 <outlet property="noteLabel" destination="XO1-29-gZN" id="cTN-KR-apD"/>
             </connections>

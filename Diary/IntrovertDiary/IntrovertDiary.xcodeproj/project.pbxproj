@@ -23,6 +23,7 @@
 		CACBFE501F4A166600B66330 /* IDNote.m in Sources */ = {isa = PBXBuildFile; fileRef = CACBFE4F1F4A166600B66330 /* IDNote.m */; };
 		CACBFE531F4A17D200B66330 /* IDNoteStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = CACBFE521F4A17D200B66330 /* IDNoteStorage.m */; };
 		CACBFE581F4A29E700B66330 /* NSDateAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = CACBFE571F4A29E700B66330 /* NSDateAdditions.m */; };
+		CACBFE5B1F4A2DCB00B66330 /* IDNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CACBFE5A1F4A2DCB00B66330 /* IDNoteViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +58,8 @@
 		CACBFE521F4A17D200B66330 /* IDNoteStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDNoteStorage.m; sourceTree = "<group>"; };
 		CACBFE561F4A29E700B66330 /* NSDateAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDateAdditions.h; sourceTree = "<group>"; };
 		CACBFE571F4A29E700B66330 /* NSDateAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDateAdditions.m; sourceTree = "<group>"; };
+		CACBFE591F4A2DCB00B66330 /* IDNoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDNoteViewController.h; sourceTree = "<group>"; };
+		CACBFE5A1F4A2DCB00B66330 /* IDNoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDNoteViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +132,8 @@
 				CACBFE181F49C1D400B66330 /* IDNoteListViewController.m */,
 				CACBFE451F4A122100B66330 /* IDInfoViewController.h */,
 				CACBFE461F4A122100B66330 /* IDInfoViewController.m */,
+				CACBFE591F4A2DCB00B66330 /* IDNoteViewController.h */,
+				CACBFE5A1F4A2DCB00B66330 /* IDNoteViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -265,6 +270,7 @@
 				CACBFE531F4A17D200B66330 /* IDNoteStorage.m in Sources */,
 				CACBFE281F49F15D00B66330 /* IDNoteTableViewCell.m in Sources */,
 				CACBFE501F4A166600B66330 /* IDNote.m in Sources */,
+				CACBFE5B1F4A2DCB00B66330 /* IDNoteViewController.m in Sources */,
 				CACBFE371F49FAD900B66330 /* IDDropShadowView.m in Sources */,
 				CACBFE211F49C1D400B66330 /* IDAppDelegate.m in Sources */,
 				CACBFE471F4A122100B66330 /* IDInfoViewController.m in Sources */,

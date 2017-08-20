@@ -23,6 +23,7 @@
 	[backButton sizeToFit];
 	[backButton addTarget:self action:@selector(goBack)
 				forControlEvents:UIControlEventTouchUpInside];
+	backButton.exclusiveTouch = YES;
 	self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]
 				initWithCustomView:backButton];
 }

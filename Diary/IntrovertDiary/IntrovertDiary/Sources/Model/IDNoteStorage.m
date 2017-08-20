@@ -42,7 +42,7 @@
 
 - (NSArray<IDNote *> *)notes
 {
-	return _mutableNotes;
+	return self.mutableNotes;
 }
 
 - (void)saveNote:(IDNote *)note

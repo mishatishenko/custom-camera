@@ -11,6 +11,7 @@
 #import "IDNoteStorage.h"
 #import "IDNote.h"
 #import "NSDateAdditions.h"
+#import "IDNoteViewController.h"
 
 @interface IDNoteListViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -44,12 +45,15 @@
 				forControlEvents:UIControlEventTouchUpInside];
 	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
 				initWithCustomView:infoButton];
+	infoButton.exclusiveTouch = YES;
 	
 	self.notes = [NSArray arrayWithArray:[[IDNoteStorage sharedStorage] notes]];
 }
 
 - (IBAction)addNewNote:(UIButton *)sender
 {
+	[self presentViewController:[IDNoteViewController createNoteController]
+				animated:YES completion:nil];
 }
 
 - (void)presentInfo
@@ -62,9 +66,13 @@
 
 #pragma mark - UITableViewDelegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView
+			didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
+	[tableView deselectRowAtIndexPath:indexPath animated:NO];
+	[self presentViewController:[IDNoteViewController
+				noteControllerWithNote:self.notes[indexPath.row]]
+				animated:YES completion:nil];
 }
 
 #pragma mark - UITableViewDataSource
@@ -82,7 +90,10 @@
 	
 	cell.noteLabel.text = note.text;
 	cell.dateLabel.text = [note.creationDate localizableDate];
-	cell.imageView.image = nil != note.picture ? note.picture : [UIImage imageNamed:@"image"];
+	cell.noteImageView.image = nil != note.picture ? note.picture : [UIImage imageNamed:@"image"];
+	cell.noteImageView.contentMode = UIViewContentModeCenter;
+	cell.noteImageView.translatesAutoresizingMaskIntoConstraints = NO;
+	[cell.noteImageView sizeToFit];
 	
 	return cell;
 }
