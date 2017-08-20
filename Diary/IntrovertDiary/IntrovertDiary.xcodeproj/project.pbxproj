@@ -18,6 +18,7 @@
 		CACBFE2F1F49F82D00B66330 /* SF-UI-Display-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = CACBFE2C1F49F82D00B66330 /* SF-UI-Display-Semibold.otf */; };
 		CACBFE341F49F94800B66330 /* SF-UI-Display-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = CACBFE331F49F94800B66330 /* SF-UI-Display-Regular.otf */; };
 		CACBFE371F49FAD900B66330 /* IDDropShadowView.m in Sources */ = {isa = PBXBuildFile; fileRef = CACBFE361F49FAD900B66330 /* IDDropShadowView.m */; };
+		CACBFE401F4A078500B66330 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CACBFE421F4A078500B66330 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,9 @@
 		CACBFE331F49F94800B66330 /* SF-UI-Display-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Display-Regular.otf"; sourceTree = "<group>"; };
 		CACBFE351F49FAD200B66330 /* IDDropShadowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDDropShadowView.h; sourceTree = "<group>"; };
 		CACBFE361F49FAD900B66330 /* IDDropShadowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDDropShadowView.m; sourceTree = "<group>"; };
+		CACBFE411F4A078500B66330 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		CACBFE431F4A07CA00B66330 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		CACBFE441F4A07E800B66330 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +88,7 @@
 				CACBFE0E1F49C1D400B66330 /* Assets.xcassets */,
 				CACBFE0F1F49C1D400B66330 /* LaunchScreen.storyboard */,
 				CACBFE111F49C1D400B66330 /* Main.storyboard */,
+				CACBFE421F4A078500B66330 /* Localizable.strings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -189,6 +194,8 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
+				uk,
 			);
 			mainGroup = CACBFDEA1F49C10600B66330;
 			productRefGroup = CACBFDF41F49C10600B66330 /* Products */;
@@ -208,6 +215,7 @@
 				CACBFE201F49C1D400B66330 /* Main.storyboard in Resources */,
 				CACBFE1E1F49C1D400B66330 /* Assets.xcassets in Resources */,
 				CACBFE341F49F94800B66330 /* SF-UI-Display-Regular.otf in Resources */,
+				CACBFE401F4A078500B66330 /* Localizable.strings in Resources */,
 				CACBFE2F1F49F82D00B66330 /* SF-UI-Display-Semibold.otf in Resources */,
 				CACBFE2B1F49F18800B66330 /* IDNoteTableViewCell.xib in Resources */,
 				CACBFE1F1F49C1D400B66330 /* LaunchScreen.storyboard in Resources */,
@@ -248,6 +256,16 @@
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
+		CACBFE421F4A078500B66330 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CACBFE411F4A078500B66330 /* en */,
+				CACBFE431F4A07CA00B66330 /* ru */,
+				CACBFE441F4A07E800B66330 /* uk */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -255,6 +273,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -303,6 +322,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";

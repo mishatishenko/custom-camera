@@ -28,6 +28,8 @@
 				bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"note"];
 	self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
 	self.tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
+	
+	self.title = NSLocalizedString(@"cToday", @"Title");
 }
 
 - (IBAction)addNewNote:(UIButton *)sender
