@@ -13,6 +13,11 @@
 		CACBFE211F49C1D400B66330 /* IDAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CACBFE161F49C1D400B66330 /* IDAppDelegate.m */; };
 		CACBFE221F49C1D400B66330 /* IDNoteListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CACBFE181F49C1D400B66330 /* IDNoteListViewController.m */; };
 		CACBFE241F49C1D400B66330 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CACBFE1C1F49C1D400B66330 /* main.m */; };
+		CACBFE281F49F15D00B66330 /* IDNoteTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CACBFE261F49F15D00B66330 /* IDNoteTableViewCell.m */; };
+		CACBFE2B1F49F18800B66330 /* IDNoteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CACBFE2A1F49F18800B66330 /* IDNoteTableViewCell.xib */; };
+		CACBFE2F1F49F82D00B66330 /* SF-UI-Display-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = CACBFE2C1F49F82D00B66330 /* SF-UI-Display-Semibold.otf */; };
+		CACBFE341F49F94800B66330 /* SF-UI-Display-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = CACBFE331F49F94800B66330 /* SF-UI-Display-Regular.otf */; };
+		CACBFE371F49FAD900B66330 /* IDDropShadowView.m in Sources */ = {isa = PBXBuildFile; fileRef = CACBFE361F49FAD900B66330 /* IDDropShadowView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +31,13 @@
 		CACBFE181F49C1D400B66330 /* IDNoteListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDNoteListViewController.m; sourceTree = "<group>"; };
 		CACBFE1B1F49C1D400B66330 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CACBFE1C1F49C1D400B66330 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		CACBFE251F49F15D00B66330 /* IDNoteTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDNoteTableViewCell.h; sourceTree = "<group>"; };
+		CACBFE261F49F15D00B66330 /* IDNoteTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDNoteTableViewCell.m; sourceTree = "<group>"; };
+		CACBFE2A1F49F18800B66330 /* IDNoteTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IDNoteTableViewCell.xib; sourceTree = "<group>"; };
+		CACBFE2C1F49F82D00B66330 /* SF-UI-Display-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Display-Semibold.otf"; sourceTree = "<group>"; };
+		CACBFE331F49F94800B66330 /* SF-UI-Display-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Display-Regular.otf"; sourceTree = "<group>"; };
+		CACBFE351F49FAD200B66330 /* IDDropShadowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDDropShadowView.h; sourceTree = "<group>"; };
+		CACBFE361F49FAD900B66330 /* IDDropShadowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDDropShadowView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +79,8 @@
 		CACBFE0D1F49C1D400B66330 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CACBFE321F49F83700B66330 /* Fonts */,
+				CACBFE2A1F49F18800B66330 /* IDNoteTableViewCell.xib */,
 				CACBFE0E1F49C1D400B66330 /* Assets.xcassets */,
 				CACBFE0F1F49C1D400B66330 /* LaunchScreen.storyboard */,
 				CACBFE111F49C1D400B66330 /* Main.storyboard */,
@@ -115,8 +129,21 @@
 		CACBFE1D1F49C1D400B66330 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CACBFE351F49FAD200B66330 /* IDDropShadowView.h */,
+				CACBFE361F49FAD900B66330 /* IDDropShadowView.m */,
+				CACBFE251F49F15D00B66330 /* IDNoteTableViewCell.h */,
+				CACBFE261F49F15D00B66330 /* IDNoteTableViewCell.m */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		CACBFE321F49F83700B66330 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				CACBFE331F49F94800B66330 /* SF-UI-Display-Regular.otf */,
+				CACBFE2C1F49F82D00B66330 /* SF-UI-Display-Semibold.otf */,
+			);
+			name = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -180,6 +207,9 @@
 			files = (
 				CACBFE201F49C1D400B66330 /* Main.storyboard in Resources */,
 				CACBFE1E1F49C1D400B66330 /* Assets.xcassets in Resources */,
+				CACBFE341F49F94800B66330 /* SF-UI-Display-Regular.otf in Resources */,
+				CACBFE2F1F49F82D00B66330 /* SF-UI-Display-Semibold.otf in Resources */,
+				CACBFE2B1F49F18800B66330 /* IDNoteTableViewCell.xib in Resources */,
 				CACBFE1F1F49C1D400B66330 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -193,6 +223,8 @@
 			files = (
 				CACBFE221F49C1D400B66330 /* IDNoteListViewController.m in Sources */,
 				CACBFE241F49C1D400B66330 /* main.m in Sources */,
+				CACBFE281F49F15D00B66330 /* IDNoteTableViewCell.m in Sources */,
+				CACBFE371F49FAD900B66330 /* IDDropShadowView.m in Sources */,
 				CACBFE211F49C1D400B66330 /* IDAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

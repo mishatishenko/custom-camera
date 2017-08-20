@@ -7,6 +7,7 @@
 //
 
 #import "IDNoteListViewController.h"
+#import "IDNoteTableViewCell.h"
 
 @interface IDNoteListViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -22,6 +23,11 @@
 
 	self.tableView.delegate = self;
 	self.tableView.dataSource = self;
+	
+	[self.tableView registerNib:[UINib nibWithNibName:@"IDNoteTableViewCell"
+				bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"note"];
+	self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+	self.tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
 }
 
 - (IBAction)addNewNote:(UIButton *)sender
@@ -39,12 +45,23 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-	return 0;
+	return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	return nil;
+	IDNoteTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"note"
+				forIndexPath:indexPath];
+	
+	cell.noteLabel.text = @"New note";
+	cell.dateLabel.text = @"15/20/2222";
+	
+	return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	return 92;
 }
 
 @end
