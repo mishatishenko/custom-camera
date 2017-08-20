@@ -133,16 +133,27 @@
 
 - (void)persistNotes
 {
-	[[NSUserDefaults standardUserDefaults] setObject:
-				[NSKeyedArchiver archivedDataWithRootObject:self.mutableNotes]
-				forKey:@"notes"];
+	if (self.mutableNotes.count > 0)
+	{
+		[[NSUserDefaults standardUserDefaults] setObject:
+					[NSKeyedArchiver archivedDataWithRootObject:self.mutableNotes]
+					forKey:@"notes"];
+	}
+	else
+	{
+		[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"notes"];
+	}
 }
 
 - (void)restoreNotes
 {
-	[self.mutableNotes addObjectsFromArray:[NSKeyedUnarchiver
-				unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults]
-				objectForKey:@"notes"]]];
+	NSData *data = [[NSUserDefaults standardUserDefaults]
+				objectForKey:@"notes"];
+	if (nil != data)
+	{
+		[self.mutableNotes addObjectsFromArray:[NSKeyedUnarchiver
+					unarchiveObjectWithData:data]];
+	}
 }
 
 @end

@@ -36,6 +36,7 @@
 
 	self.tableView.delegate = self;
 	self.tableView.dataSource = self;
+	self.tableView.rowHeight = 92;
 	
 	[self.tableView registerNib:[UINib nibWithNibName:@"IDNoteTableViewCell"
 				bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"note"];
@@ -56,6 +57,13 @@
 	infoButton.exclusiveTouch = YES;
 	
 	self.notes = [NSArray arrayWithArray:[[IDNoteStorage sharedStorage] notes]];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+	[super viewWillAppear:animated];
+	
+	[self.tableView reloadData];
 }
 
 - (IBAction)addNewNote:(UIButton *)sender
@@ -115,12 +123,8 @@
 
 - (void)noteStorage:(IDNoteStorage *)sender didDeleteNote:(IDNote *)note
 {
-	[self.tableView beginUpdates];
-	[self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath
-				indexPathForRow:[self.notes indexOfObject:note] inSection:0]]
-				withRowAnimation:UITableViewRowAnimationLeft];
 	self.notes = [NSArray arrayWithArray:[[IDNoteStorage sharedStorage] notes]];
-	[self.tableView endUpdates];
+	[self.tableView reloadData];
 	
 	[self dismissViewControllerAnimated:YES completion:nil];
 }
