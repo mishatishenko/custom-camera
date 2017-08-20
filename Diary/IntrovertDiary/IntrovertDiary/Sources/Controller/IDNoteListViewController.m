@@ -8,10 +8,14 @@
 
 #import "IDNoteListViewController.h"
 #import "IDNoteTableViewCell.h"
+#import "IDNoteStorage.h"
+#import "IDNote.h"
+#import "NSDateAdditions.h"
 
 @interface IDNoteListViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) NSArray<IDNote *> *notes;
 
 @end
 
@@ -40,6 +44,8 @@
 				forControlEvents:UIControlEventTouchUpInside];
 	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
 				initWithCustomView:infoButton];
+	
+	self.notes = [NSArray arrayWithArray:[[IDNoteStorage sharedStorage] notes]];
 }
 
 - (IBAction)addNewNote:(UIButton *)sender
@@ -65,16 +71,18 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-	return 1;
+	return self.notes.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	IDNoteTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"note"
 				forIndexPath:indexPath];
+	IDNote *note = self.notes[indexPath.row];
 	
-	cell.noteLabel.text = @"New note";
-	cell.dateLabel.text = @"15/20/2222";
+	cell.noteLabel.text = note.text;
+	cell.dateLabel.text = [note.creationDate localizableDate];
+	cell.imageView.image = nil != note.picture ? note.picture : [UIImage imageNamed:@"image"];
 	
 	return cell;
 }

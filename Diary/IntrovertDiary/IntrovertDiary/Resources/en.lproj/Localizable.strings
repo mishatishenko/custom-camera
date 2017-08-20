@@ -8,3 +8,16 @@
 
 "cToday" = "TODAY";
 "cAboutApp" = "ABOUT APPLICATION";
+
+"cJanuary" = "January";
+"cFebruary" = "February";
+"cMarch" = "March";
+"cApril" = "April";
+"cMay" = "May";
+"cJune" = "June";
+"cJuly" = "July";
+"cAugust" = "August";
+"cSeptember" = "September";
+"cOctember" = "Octember";
+"cNovember" = "November";
+"cDecember" = "December";

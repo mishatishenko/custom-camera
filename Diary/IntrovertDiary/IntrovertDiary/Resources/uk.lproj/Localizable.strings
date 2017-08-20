@@ -8,3 +8,16 @@
 
 "cToday" = "СЬОГОДНІ";
 "cAboutApp" = "ПРО ПРОГРАМУ";
+
+"cJanuary" = "Січень";
+"cFebruary" = "Лютий";
+"cMarch" = "Березень";
+"cApril" = "Квітень";
+"cMay" = "Травень";
+"cJune" = "Червень";
+"cJuly" = "Липень";
+"cAugust" = "Серпень";
+"cSeptember" = "Вересень";
+"cOctember" = "Жовтень";
+"cNovember" = "Листопад";
+"cDecember" = "Грудень";
