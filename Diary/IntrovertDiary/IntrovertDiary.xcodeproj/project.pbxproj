@@ -10,9 +10,8 @@
 		CACBFE1E1F49C1D400B66330 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CACBFE0E1F49C1D400B66330 /* Assets.xcassets */; };
 		CACBFE1F1F49C1D400B66330 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CACBFE0F1F49C1D400B66330 /* LaunchScreen.storyboard */; };
 		CACBFE201F49C1D400B66330 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CACBFE111F49C1D400B66330 /* Main.storyboard */; };
-		CACBFE211F49C1D400B66330 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CACBFE161F49C1D400B66330 /* AppDelegate.m */; };
-		CACBFE221F49C1D400B66330 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CACBFE181F49C1D400B66330 /* ViewController.m */; };
-		CACBFE231F49C1D400B66330 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CACBFE1B1F49C1D400B66330 /* Info.plist */; };
+		CACBFE211F49C1D400B66330 /* IDAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CACBFE161F49C1D400B66330 /* IDAppDelegate.m */; };
+		CACBFE221F49C1D400B66330 /* IDNoteListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CACBFE181F49C1D400B66330 /* IDNoteListViewController.m */; };
 		CACBFE241F49C1D400B66330 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CACBFE1C1F49C1D400B66330 /* main.m */; };
 /* End PBXBuildFile section */
 
@@ -21,10 +20,10 @@
 		CACBFE0E1F49C1D400B66330 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CACBFE101F49C1D400B66330 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CACBFE121F49C1D400B66330 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		CACBFE151F49C1D400B66330 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		CACBFE161F49C1D400B66330 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		CACBFE171F49C1D400B66330 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		CACBFE181F49C1D400B66330 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		CACBFE151F49C1D400B66330 /* IDAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDAppDelegate.h; sourceTree = "<group>"; };
+		CACBFE161F49C1D400B66330 /* IDAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDAppDelegate.m; sourceTree = "<group>"; };
+		CACBFE171F49C1D400B66330 /* IDNoteListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDNoteListViewController.h; sourceTree = "<group>"; };
+		CACBFE181F49C1D400B66330 /* IDNoteListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDNoteListViewController.m; sourceTree = "<group>"; };
 		CACBFE1B1F49C1D400B66330 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CACBFE1C1F49C1D400B66330 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -89,10 +88,10 @@
 		CACBFE141F49C1D400B66330 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				CACBFE151F49C1D400B66330 /* AppDelegate.h */,
-				CACBFE161F49C1D400B66330 /* AppDelegate.m */,
-				CACBFE171F49C1D400B66330 /* ViewController.h */,
-				CACBFE181F49C1D400B66330 /* ViewController.m */,
+				CACBFE151F49C1D400B66330 /* IDAppDelegate.h */,
+				CACBFE161F49C1D400B66330 /* IDAppDelegate.m */,
+				CACBFE171F49C1D400B66330 /* IDNoteListViewController.h */,
+				CACBFE181F49C1D400B66330 /* IDNoteListViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -179,7 +178,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CACBFE231F49C1D400B66330 /* Info.plist in Resources */,
 				CACBFE201F49C1D400B66330 /* Main.storyboard in Resources */,
 				CACBFE1E1F49C1D400B66330 /* Assets.xcassets in Resources */,
 				CACBFE1F1F49C1D400B66330 /* LaunchScreen.storyboard in Resources */,
@@ -193,9 +191,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CACBFE221F49C1D400B66330 /* ViewController.m in Sources */,
+				CACBFE221F49C1D400B66330 /* IDNoteListViewController.m in Sources */,
 				CACBFE241F49C1D400B66330 /* main.m in Sources */,
-				CACBFE211F49C1D400B66330 /* AppDelegate.m in Sources */,
+				CACBFE211F49C1D400B66330 /* IDAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

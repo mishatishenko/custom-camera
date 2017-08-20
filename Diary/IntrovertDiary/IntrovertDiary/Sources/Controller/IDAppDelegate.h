@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  IDAppDelegate.h
 //  IntrovertDiary
 //
 //  Created by Www Www on 8/20/17.
@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface IDAppDelegate : UIResponder <UIApplicationDelegate>
 
+@property (strong, nonatomic) UIWindow *window;
 
 @end
 
