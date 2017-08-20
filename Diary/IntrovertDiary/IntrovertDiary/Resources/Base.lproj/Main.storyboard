@@ -148,7 +148,7 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="odl-Tu-Wnk">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="559"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qy3-3h-shq">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qy3-3h-shq">
                                         <rect key="frame" x="16" y="16" width="343" height="128"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="128" id="31B-vS-ytu"/>

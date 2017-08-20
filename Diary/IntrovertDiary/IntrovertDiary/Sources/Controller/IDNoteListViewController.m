@@ -98,6 +98,8 @@
 	
 	cell.noteLabel.text = note.text;
 	cell.dateLabel.text = [note.creationDate localizableDate];
+	cell.noteImageView.contentMode =  nil != note.picture ?
+				UIViewContentModeScaleAspectFill : UIViewContentModeCenter;
 	cell.noteImageView.image = nil != note.picture ?
 				note.picture : [UIImage imageNamed:@"image"];
 	

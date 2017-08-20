@@ -145,12 +145,12 @@
 	[self turnEditMode:NO];
 	
 	BOOL noteIsEdited = NO;
-	if (![self.image isEqual:self.note.picture])
+	if (![self.image isEqual:self.note.picture] && nil != self.image)
 	{
 		noteIsEdited = YES;
 		self.note.picture = self.image;
 	}
-	if (![self.note.text isEqualToString:self.text])
+	if (![self.note.text isEqualToString:self.text] && nil != self.text)
 	{
 		noteIsEdited = YES;
 		self.note.text = self.text;
