@@ -30,10 +30,25 @@
 	self.tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
 	
 	self.title = NSLocalizedString(@"cToday", @"Title");
+	
+	UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeCustom];
+	infoButton.backgroundColor = [UIColor clearColor];
+	[infoButton setImage:[UIImage imageNamed:@"info"]
+				forState:UIControlStateNormal];
+	[infoButton sizeToFit];
+	[infoButton addTarget:self action:@selector(presentInfo)
+				forControlEvents:UIControlEventTouchUpInside];
+	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
+				initWithCustomView:infoButton];
 }
 
 - (IBAction)addNewNote:(UIButton *)sender
 {
+}
+
+- (void)presentInfo
+{
+
 }
 
 #pragma mark - UITableViewDelegate
