@@ -20,6 +20,8 @@
 		CACBFE371F49FAD900B66330 /* IDDropShadowView.m in Sources */ = {isa = PBXBuildFile; fileRef = CACBFE361F49FAD900B66330 /* IDDropShadowView.m */; };
 		CACBFE401F4A078500B66330 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CACBFE421F4A078500B66330 /* Localizable.strings */; };
 		CACBFE471F4A122100B66330 /* IDInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CACBFE461F4A122100B66330 /* IDInfoViewController.m */; };
+		CACBFE501F4A166600B66330 /* IDNote.m in Sources */ = {isa = PBXBuildFile; fileRef = CACBFE4F1F4A166600B66330 /* IDNote.m */; };
+		CACBFE531F4A17D200B66330 /* IDNoteStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = CACBFE521F4A17D200B66330 /* IDNoteStorage.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +50,10 @@
 		CACBFE491F4A13DE00B66330 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		CACBFE4B1F4A13E000B66330 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
 		CACBFE4D1F4A13E100B66330 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Main.strings; sourceTree = "<group>"; };
+		CACBFE4E1F4A166600B66330 /* IDNote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDNote.h; sourceTree = "<group>"; };
+		CACBFE4F1F4A166600B66330 /* IDNote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDNote.m; sourceTree = "<group>"; };
+		CACBFE511F4A17D200B66330 /* IDNoteStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDNoteStorage.h; sourceTree = "<group>"; };
+		CACBFE521F4A17D200B66330 /* IDNoteStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDNoteStorage.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +132,10 @@
 		CACBFE191F49C1D400B66330 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CACBFE4E1F4A166600B66330 /* IDNote.h */,
+				CACBFE4F1F4A166600B66330 /* IDNote.m */,
+				CACBFE511F4A17D200B66330 /* IDNoteStorage.h */,
+				CACBFE521F4A17D200B66330 /* IDNoteStorage.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -239,7 +249,9 @@
 			files = (
 				CACBFE221F49C1D400B66330 /* IDNoteListViewController.m in Sources */,
 				CACBFE241F49C1D400B66330 /* main.m in Sources */,
+				CACBFE531F4A17D200B66330 /* IDNoteStorage.m in Sources */,
 				CACBFE281F49F15D00B66330 /* IDNoteTableViewCell.m in Sources */,
+				CACBFE501F4A166600B66330 /* IDNote.m in Sources */,
 				CACBFE371F49FAD900B66330 /* IDDropShadowView.m in Sources */,
 				CACBFE211F49C1D400B66330 /* IDAppDelegate.m in Sources */,
 				CACBFE471F4A122100B66330 /* IDInfoViewController.m in Sources */,
