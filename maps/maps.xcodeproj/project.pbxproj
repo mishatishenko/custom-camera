@@ -17,6 +17,7 @@
 		CACBFDDB1F471DFF00B66330 /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CACBFDDA1F471DFF00B66330 /* Photos.framework */; };
 		CACBFDDE1F471E3B00B66330 /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = CACBFDDD1F471E3B00B66330 /* Photo.m */; };
 		CACBFDE11F471E4D00B66330 /* PhotoStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = CACBFDE01F471E4D00B66330 /* PhotoStorage.m */; };
+		CACBFDE91F47364D00B66330 /* GoogleMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CACBFDE81F47364D00B66330 /* GoogleMapViewController.m */; };
 		F3E9780855B3DDB249D3980D /* libPods-maps.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E2ED2EB66EAD49B96198634C /* libPods-maps.a */; };
 /* End PBXBuildFile section */
 
@@ -40,6 +41,8 @@
 		CACBFDDF1F471E4D00B66330 /* PhotoStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoStorage.h; sourceTree = "<group>"; };
 		CACBFDE01F471E4D00B66330 /* PhotoStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoStorage.m; sourceTree = "<group>"; };
 		CACBFDE31F4721ED00B66330 /* Configuration.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Configuration.xcconfig; sourceTree = "<group>"; };
+		CACBFDE71F47364D00B66330 /* GoogleMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoogleMapViewController.h; sourceTree = "<group>"; };
+		CACBFDE81F47364D00B66330 /* GoogleMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleMapViewController.m; sourceTree = "<group>"; };
 		E2ED2EB66EAD49B96198634C /* libPods-maps.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-maps.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -133,6 +136,8 @@
 			children = (
 				CACBFDD51F471DB500B66330 /* MapViewController.h */,
 				CACBFDD61F471DB500B66330 /* MapViewController.m */,
+				CACBFDE71F47364D00B66330 /* GoogleMapViewController.h */,
+				CACBFDE81F47364D00B66330 /* GoogleMapViewController.m */,
 			);
 			path = MapController;
 			sourceTree = "<group>";
@@ -295,6 +300,7 @@
 				CACBFDD91F471DB500B66330 /* MapViewController.m in Sources */,
 				CA0990CE1F1598500085759A /* main.m in Sources */,
 				CACBFDE11F471E4D00B66330 /* PhotoStorage.m in Sources */,
+				CACBFDE91F47364D00B66330 /* GoogleMapViewController.m in Sources */,
 				CA0990CD1F1598500085759A /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

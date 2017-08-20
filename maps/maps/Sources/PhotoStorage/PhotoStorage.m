@@ -94,7 +94,10 @@
 		{
 			return;
 		}
+		NSLog(@"start");
 		self.inSetup = YES;
+		static int i = 0;
+		NSLog(@"%i", i);
 		[self.mutablePhotos removeAllObjects];
 	}
 	[self requestAccessStatusWithCompletion:^(PhotoStorageAccess status)
@@ -113,9 +116,11 @@
 						Photo *photo = [[Photo alloc] initWithAsset:obj];
 						[self.mutablePhotos addObject:photo];
 						
+						PHImageRequestOptions *options = [PHImageRequestOptions new];
+						options.synchronous = NO;
 						[[PHImageManager defaultManager] requestImageForAsset:obj
 									targetSize:CGSizeMake(40, 40)
-									contentMode:PHImageContentModeAspectFill options:nil
+									contentMode:PHImageContentModeAspectFill options:options
 									resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info)
 						{
 							if (nil != result)
@@ -134,6 +139,7 @@
 						{
 							self.inSetup = NO;
 						}
+						NSLog(@"end");
 						completion(nil);
 					}
 				});
@@ -145,6 +151,7 @@
 			{
 				self.inSetup = NO;
 			}
+			NSLog(@"end");
 			completion([NSError errorWithDomain:@"PhotoStorage" code:-1 userInfo:nil]);
 		}
 	}];

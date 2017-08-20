@@ -24,7 +24,10 @@
 	
 	self.photoStorage = [PhotoStorage new];
 	self.photoStorage.observer = self;
-	
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
 	[self.photoStorage setupWithCompletion:^(NSError *error)
 	{
 		if (nil == error)
