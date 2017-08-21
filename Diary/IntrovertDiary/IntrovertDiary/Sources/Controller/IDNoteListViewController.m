@@ -83,8 +83,38 @@
 
 - (IBAction)addNewNote:(UIButton *)sender
 {
-	[self presentViewController:[IDNoteViewController createNoteController]
-				animated:YES completion:nil];
+	BOOL shouldAddNewNote = YES;
+	if (self.notes.count > 0)
+	{
+		NSDateComponents *newComponents = [[NSCalendar currentCalendar]
+					components:NSCalendarUnitMonth fromDate:[NSDate date]];
+		
+		NSDateComponents *lastComponents = [[NSCalendar currentCalendar]
+					components:NSCalendarUnitMonth
+					fromDate:self.notes.lastObject.creationDate];
+		
+		if (newComponents.year == lastComponents.year &&
+					newComponents.month == lastComponents.month &&
+					newComponents.day == lastComponents.day)
+		{
+			shouldAddNewNote = NO;
+			UIAlertController *alert = [UIAlertController alertControllerWithTitle:
+						NSLocalizedString(@"cSorry", @"") message:
+						NSLocalizedString(@"cYouCanCreate", @"")
+						preferredStyle:UIAlertControllerStyleAlert];
+			
+			[alert addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"cOk", @"")
+						style:UIAlertActionStyleDefault handler:nil]];
+			
+			[self presentViewController:alert animated:YES completion:nil];
+		}
+	}
+	
+	if (shouldAddNewNote)
+	{
+		[self presentViewController:[IDNoteViewController createNoteController]
+					animated:YES completion:nil];
+	}
 }
 
 - (void)presentInfo

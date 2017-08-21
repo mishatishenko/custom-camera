@@ -30,3 +30,5 @@
 "cError" = "Error";
 "cNoAccessToPhotos" = "The application has not access to Camera Roll. Please, enable access at Privacy Settings.";
 "cExpiredDescription" = "Your yesterday note was expired. Lets note new memories!";
+"cSorry" = "Sorry...";
+"cYouCanCreate" = "You can create only one note per day.";
