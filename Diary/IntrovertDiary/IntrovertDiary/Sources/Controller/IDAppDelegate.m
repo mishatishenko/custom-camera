@@ -7,8 +7,6 @@
 //
 
 #import "IDAppDelegate.h"
-#import "IDNoteStorage.h"
-#import "IDNote.h"
 
 @implementation IDAppDelegate
 
@@ -24,12 +22,6 @@
 					[UIFont fontWithName:@"SFUIDisplay-Semibold" size:12.0]
 				};
 	[[UINavigationBar appearance] setTitleTextAttributes:textTitleOptions];
-	/*
-	IDNote *note = [IDNote new];
-	note.text = @"fsdfdsgzfdgasGDS GSDG DSHS FAS Vzf dbdfz  DSFHSDHFDH fhdxhfdzh"
-				" zdfhzfdhzfdh dfzhzfdhzfd hzdfhdfhdfzh zfdhzdfhzdfhfd hzdfhzfdhdf"
-				"hzdfhzfdhfdz hfdzhzfdhfzdhzfd\n dfgzdfgdfzgdf\ndfgzdfgzdf";
-	[[IDNoteStorage sharedStorage] saveNote:note];*/
 	
 	return YES;
 }

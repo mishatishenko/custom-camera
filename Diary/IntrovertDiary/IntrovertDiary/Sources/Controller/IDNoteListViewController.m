@@ -182,7 +182,10 @@
 				style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action)
 	{
 		self.expirationAlert = nil;
-		[self dismissViewControllerAnimated:YES completion:nil];
+		if (self.selectedNote == note)
+		{
+			[self dismissViewControllerAnimated:YES completion:nil];
+		}
 	}]];
 	
 	UIViewController *topController = self;

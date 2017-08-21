@@ -67,9 +67,10 @@
 
 - (UIImage *)picture
 {
-	if (nil == _picture)
+	if (nil == _picture && nil != self.picturePath)
 	{
-		_picture = [UIImage imageWithContentsOfFile:self.picturePath];
+		NSURL *pictureURL = [NSURL fileURLWithPath:self.picturePath];
+		_picture = [UIImage imageWithContentsOfFile:pictureURL.path];
 	}
 	
 	return _picture;

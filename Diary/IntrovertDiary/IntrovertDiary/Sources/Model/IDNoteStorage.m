@@ -174,7 +174,7 @@
 - (void)persistNotes
 {
 	NSArray *notes = nil;
-	@synchronized (self)
+	@synchronized(self)
 	{
 		notes = self.mutableNotes;
 	}

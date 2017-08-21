@@ -139,6 +139,7 @@
 	
 	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
 				initWithCustomView:button];
+	button.enabled = !enableEditMode || nil != self.image || nil != self.text;
 }
 
 - (void)cancelEditing
@@ -270,8 +271,9 @@
 		
 		[self.changePictureButton setImage:[UIImage imageNamed:@"imageWhite"]
 					forState:UIControlStateNormal];
-	self.changePictureButton.backgroundColor =
-				[UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
+		self.changePictureButton.backgroundColor =
+					[UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
+		((UIButton *)self.navigationItem.rightBarButtonItem.customView).enabled = YES;
 	}
 	[self dismissViewControllerAnimated:YES completion:nil];
 }
