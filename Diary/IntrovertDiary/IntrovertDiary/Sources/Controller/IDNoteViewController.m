@@ -199,9 +199,37 @@
 
 - (IBAction)changePicture:(UIButton *)sender
 {
-	[PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status)
+	if ([PHPhotoLibrary authorizationStatus] == PHAuthorizationStatusNotDetermined)
 	{
-		if (status == PHAuthorizationStatusAuthorized)
+		[PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status)
+		{
+			dispatch_async(dispatch_get_main_queue(),
+			^{
+				if (status == PHAuthorizationStatusAuthorized)
+				{
+					UIImagePickerController *picker = [UIImagePickerController new];
+					picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+					picker.delegate = self;
+					[self presentViewController:picker animated:YES completion:nil];
+				}
+				else
+				{
+					UIAlertController *alert = [UIAlertController alertControllerWithTitle:
+								NSLocalizedString(@"cError", @"") message:
+								NSLocalizedString(@"cNoAccessToPhotos", @"")
+								preferredStyle:UIAlertControllerStyleAlert];
+					
+					[alert addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"cOk", @"")
+								style:UIAlertActionStyleDefault handler:nil]];
+					
+					[self presentViewController:alert animated:YES completion:nil];
+				}
+			});
+		}];
+	}
+	else
+	{
+		if ([PHPhotoLibrary authorizationStatus] == PHAuthorizationStatusAuthorized)
 		{
 			UIImagePickerController *picker = [UIImagePickerController new];
 			picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
@@ -220,7 +248,7 @@
 			
 			[self presentViewController:alert animated:YES completion:nil];
 		}
-	}];
+	}
 }
 
 #pragma mark - UIImagePicker delegate
