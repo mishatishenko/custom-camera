@@ -16,11 +16,14 @@
 @interface IDNoteViewController () <UIImagePickerControllerDelegate,
 			UINavigationControllerDelegate, UITextViewDelegate>
 
+@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) IBOutlet UIImageView *imageView;
 @property (strong, nonatomic) IBOutlet UILabel *dateLabel;
 @property (strong, nonatomic) IBOutlet UITextView *noteTextView;
 @property (strong, nonatomic) IBOutlet UIButton *changePictureButton;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *imageWidthConstraint;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *textHeightConstraint;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *scrollViewBottomConstraint;
 
 @property (nonatomic) BOOL editMode;
 
@@ -55,6 +58,11 @@
 	controller.editMode = YES;
 	
 	return navigationController;
+}
+
+- (void)dealloc
+{
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)viewDidLoad
@@ -112,6 +120,23 @@
 				[[UIBarButtonItem alloc] initWithBarButtonSystemItem:
 				UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
 				[[UIBarButtonItem alloc] initWithCustomView:shareButton]];
+	
+	[[NSNotificationCenter defaultCenter] addObserver:self
+				selector:@selector(keyboardWillAppear:)
+				name:UIKeyboardWillShowNotification object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self
+				selector:@selector(keyboardWillDisappear:)
+				name:UIKeyboardWillHideNotification object:nil];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+	[super viewWillAppear:animated];
+	
+	CGSize estimatedSize = [self.noteTextView sizeThatFits:CGSizeMake(
+				CGRectGetWidth(self.noteTextView.frame), MAXFLOAT)];
+	
+	self.textHeightConstraint.constant = estimatedSize.height;
 }
 
 - (void)turnEditMode:(BOOL)enableEditMode
@@ -319,6 +344,17 @@
 	return YES;
 }
 
+- (void)textViewDidBeginEditing:(UITextView *)textView
+{
+	if (CGRectGetMaxY(self.noteTextView.frame) >
+				CGRectGetHeight(self.view.bounds) - self.scrollViewBottomConstraint.constant)
+	{
+		[self.scrollView setContentOffset:CGPointMake(0,
+					CGRectGetMaxY(self.noteTextView.frame) - CGRectGetHeight(self.view.bounds) +
+					self.scrollViewBottomConstraint.constant) animated:YES];
+	}
+}
+
 - (void)textViewDidEndEditing:(UITextView *)textView
 {
 	self.text = textView.text;
@@ -335,6 +371,28 @@
 {
 	((UIButton *)self.navigationItem.rightBarButtonItem.customView).enabled =
 				nil != self.image || textView.text.length > 0;
+	
+	CGSize estimatedSize = [self.noteTextView sizeThatFits:CGSizeMake(
+				CGRectGetWidth(self.noteTextView.frame), MAXFLOAT)];
+	
+	self.textHeightConstraint.constant = estimatedSize.height;
+}
+
+#pragma mark - Notifications
+
+- (void)keyboardWillAppear:(NSNotification *)notification
+{
+	if (nil != notification.userInfo[UIKeyboardFrameEndUserInfoKey])
+	{
+		CGRect frame = [notification.userInfo[UIKeyboardFrameEndUserInfoKey]
+					CGRectValue];
+		self.scrollViewBottomConstraint.constant = CGRectGetHeight(frame);
+	}
+}
+
+- (void)keyboardWillDisappear:(NSNotification *)notification
+{
+	self.scrollViewBottomConstraint.constant = 0;
 }
 
 @end
