@@ -201,7 +201,26 @@
 
 - (void)shareNote
 {
-
+	NSMutableArray *objectsToShare = [NSMutableArray new];
+	if (nil != self.note.text)
+	{
+		[objectsToShare addObject:self.note.text];
+	}
+	if (nil != self.note.picture)
+	{
+		[objectsToShare addObject:self.note.picture];
+	}
+ 
+	UIActivityViewController *activityController = [[UIActivityViewController alloc]
+				initWithActivityItems:objectsToShare applicationActivities:nil];
+ 
+	NSArray *excludeActivities = @[UIActivityTypePostToFacebook, UIActivityTypePostToTwitter,
+				UIActivityTypePostToWeibo, UIActivityTypeMessage,
+				UIActivityTypeMail, UIActivityTypeCopyToPasteboard, UIActivityTypePrint];
+ 
+	activityController.excludedActivityTypes = excludeActivities;
+ 
+	[self presentViewController:activityController animated:YES completion:nil];
 }
 
 - (IBAction)changePicture:(UIButton *)sender
