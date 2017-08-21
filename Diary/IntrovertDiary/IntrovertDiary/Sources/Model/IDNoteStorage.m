@@ -176,7 +176,7 @@
 	NSArray *notes = nil;
 	@synchronized(self)
 	{
-		notes = self.mutableNotes;
+		notes = [NSArray arrayWithArray:self.mutableNotes];
 	}
 	if (notes.count > 0)
 	{
@@ -211,9 +211,9 @@
 		self.tracking = YES;
 		
 		NSArray *notes = nil;
-		@synchronized (self)
+		@synchronized(self)
 		{
-			notes = self.notes;
+			notes = [NSArray arrayWithArray:self.notes];
 		}
 		
 		for (IDNote *note in notes)
