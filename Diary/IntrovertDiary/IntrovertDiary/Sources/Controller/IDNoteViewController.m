@@ -16,6 +16,7 @@
 @interface IDNoteViewController () <UIImagePickerControllerDelegate,
 			UINavigationControllerDelegate, UITextViewDelegate>
 
+@property (strong, nonatomic) IBOutlet UILabel *placeHolder;
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) IBOutlet UIImageView *imageView;
 @property (strong, nonatomic) IBOutlet UILabel *dateLabel;
@@ -89,8 +90,8 @@
 	self.dateLabel.text = [self.note.creationDate localizableDate];
 	self.text = self.note.text;
 	
-	self.noteTextView.text = nil != self.note.text ? self.note.text :
-				NSLocalizedString(@"cTellAboutYourDay", @"");
+	self.noteTextView.text = self.note.text;
+	self.placeHolder.hidden = 0 != self.text.length;
 	
 	[self turnEditMode:self.editMode];
 	
@@ -379,6 +380,8 @@
 {
 	self.text = textView.text;
 	[self.noteTextView endEditing:YES];
+	
+	self.placeHolder.hidden = 0 != textView.text.length;
 }
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range
@@ -396,6 +399,7 @@
 				CGRectGetWidth(self.noteTextView.frame), MAXFLOAT)];
 	
 	self.textHeightConstraint.constant = estimatedSize.height;
+	self.placeHolder.hidden = 0 != textView.text.length;
 }
 
 #pragma mark - Notifications
