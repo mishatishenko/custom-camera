@@ -15,4 +15,6 @@
 @property (nonatomic, strong) NSString *text;
 @property (nonatomic, readonly) NSDate *creationDate;
 
+- (void)cleanUp;
+
 @end

@@ -10,6 +10,7 @@
 #import "IDNote.h"
 #import "IDNoteStorage.h"
 #import "NSDateAdditions.h"
+#import "UIImageAdditions.h"
 #import <Photos/Photos.h>
 
 @interface IDNoteViewController () <UIImagePickerControllerDelegate,
@@ -117,6 +118,11 @@
 	
 	self.changePictureButton.userInteractionEnabled = enableEditMode;
 	self.changePictureButton.hidden = !enableEditMode && nil != self.image;
+	[self.changePictureButton setImage:[UIImage imageNamed:nil != self.image ?
+				@"imageWhite" : @"image"] forState:UIControlStateNormal];
+	self.changePictureButton.backgroundColor = nil != self.image ?
+				[UIColor colorWithRed:0 green:0 blue:0 alpha:0.5] :
+				[UIColor colorWithRed:225./255 green:231./255 blue:232./255 alpha:0.5];
 	self.noteTextView.userInteractionEnabled = enableEditMode;
 	
 	[self.navigationController setToolbarHidden:enableEditMode animated:YES];
@@ -258,8 +264,14 @@
 {
 	if (nil != info[UIImagePickerControllerOriginalImage])
 	{
-		self.image = info[UIImagePickerControllerOriginalImage];
+		self.image = [info[UIImagePickerControllerOriginalImage]
+					downscaledImageToSize:800];
 		self.imageView.image = self.image;
+		
+		[self.changePictureButton setImage:[UIImage imageNamed:@"imageWhite"]
+					forState:UIControlStateNormal];
+	self.changePictureButton.backgroundColor =
+				[UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
 	}
 	[self dismissViewControllerAnimated:YES completion:nil];
 }

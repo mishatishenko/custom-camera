@@ -26,6 +26,7 @@
 		CACBFE5B1F4A2DCB00B66330 /* IDNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CACBFE5A1F4A2DCB00B66330 /* IDNoteViewController.m */; };
 		CACBFE5E1F4A4C3800B66330 /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CACBFE5D1F4A4C3800B66330 /* Photos.framework */; };
 		CACBFE651F4A50DE00B66330 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CACBFE671F4A50DE00B66330 /* InfoPlist.strings */; };
+		CACBFE6E1F4AFA4C00B66330 /* UIImageAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = CACBFE6D1F4AFA4C00B66330 /* UIImageAdditions.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +67,8 @@
 		CACBFE681F4A50E000B66330 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		CACBFE691F4A50E100B66330 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		CACBFE6A1F4A515A00B66330 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CACBFE6C1F4AFA4C00B66330 /* UIImageAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIImageAdditions.h; sourceTree = "<group>"; };
+		CACBFE6D1F4AFA4C00B66330 /* UIImageAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImageAdditions.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,6 +195,8 @@
 			children = (
 				CACBFE561F4A29E700B66330 /* NSDateAdditions.h */,
 				CACBFE571F4A29E700B66330 /* NSDateAdditions.m */,
+				CACBFE6C1F4AFA4C00B66330 /* UIImageAdditions.h */,
+				CACBFE6D1F4AFA4C00B66330 /* UIImageAdditions.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -283,6 +288,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CACBFE6E1F4AFA4C00B66330 /* UIImageAdditions.m in Sources */,
 				CACBFE221F49C1D400B66330 /* IDNoteListViewController.m in Sources */,
 				CACBFE241F49C1D400B66330 /* main.m in Sources */,
 				CACBFE531F4A17D200B66330 /* IDNoteStorage.m in Sources */,

@@ -116,6 +116,7 @@
 - (void)removeNote:(IDNote *)note
 {
 	[self.mutableNotes removeObject:note];
+	[note cleanUp];
 	@synchronized(self)
 	{
 		for (NSValue *observerValue in self.observers)
