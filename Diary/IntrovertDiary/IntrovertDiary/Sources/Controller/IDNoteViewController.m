@@ -14,7 +14,7 @@
 #import <Photos/Photos.h>
 
 @interface IDNoteViewController () <UIImagePickerControllerDelegate,
-			UINavigationControllerDelegate>
+			UINavigationControllerDelegate, UITextViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UIImageView *imageView;
 @property (strong, nonatomic) IBOutlet UILabel *dateLabel;
@@ -62,6 +62,8 @@
 	[super viewDidLoad];
 	
 	self.title = NSLocalizedString(@"cToday", @"");
+	
+	self.noteTextView.delegate = self;
 	
 	self.imageWidthConstraint.constant =
 				CGRectGetWidth(self.navigationController.view.frame) - 32;
@@ -144,11 +146,14 @@
 
 - (void)cancelEditing
 {
+	[self.noteTextView endEditing:YES];
 	[self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)doneEditing
 {
+	[self.noteTextView endEditing:YES];
+	self.text = self.noteTextView.text;
 	[self turnEditMode:NO];
 	
 	BOOL noteIsEdited = NO;
@@ -300,6 +305,36 @@
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
 	[self dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark - UITextView delegate
+
+- (BOOL)textViewShouldBeginEditing:(UITextView *)textView
+{
+	return YES;
+}
+
+- (BOOL)textViewShouldEndEditing:(UITextView *)textView
+{
+	return YES;
+}
+
+- (void)textViewDidEndEditing:(UITextView *)textView
+{
+	self.text = textView.text;
+	[self.noteTextView endEditing:YES];
+}
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range
+			replacementText:(NSString *)text
+{
+	return YES;
+}
+
+- (void)textViewDidChange:(UITextView *)textView
+{
+	((UIButton *)self.navigationItem.rightBarButtonItem.customView).enabled =
+				nil != self.image || textView.text.length > 0;
 }
 
 @end
