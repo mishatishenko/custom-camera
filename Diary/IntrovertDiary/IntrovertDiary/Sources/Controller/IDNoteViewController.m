@@ -21,9 +21,12 @@
 @property (strong, nonatomic) IBOutlet UILabel *dateLabel;
 @property (strong, nonatomic) IBOutlet UITextView *noteTextView;
 @property (strong, nonatomic) IBOutlet UIButton *changePictureButton;
-@property (strong, nonatomic) IBOutlet NSLayoutConstraint *imageWidthConstraint;
-@property (strong, nonatomic) IBOutlet NSLayoutConstraint *textHeightConstraint;
-@property (strong, nonatomic) IBOutlet NSLayoutConstraint *scrollViewBottomConstraint;
+@property (strong, nonatomic)
+			IBOutlet NSLayoutConstraint *imageWidthConstraint;
+@property (strong, nonatomic)
+			IBOutlet NSLayoutConstraint *textHeightConstraint;
+@property (strong, nonatomic)
+			IBOutlet NSLayoutConstraint *scrollViewBottomConstraint;
 
 @property (nonatomic) BOOL editMode;
 
@@ -37,9 +40,11 @@
 
 + (UINavigationController *)noteControllerWithNote:(IDNote *)note;
 {
-	UINavigationController *navigationController = [[UIStoryboard storyboardWithName:@"Main"
+	UINavigationController *navigationController =
+				[[UIStoryboard storyboardWithName:@"Main"
 				bundle:[NSBundle mainBundle]]
-				instantiateViewControllerWithIdentifier:@"noteEditNavigationController"];
+				instantiateViewControllerWithIdentifier:
+				@"noteEditNavigationController"];
 	IDNoteViewController *controller = (IDNoteViewController *)
 				navigationController.topViewController;
 	controller.note = note;
@@ -49,9 +54,11 @@
 
 + (UINavigationController *)createNoteController
 {
-	UINavigationController *navigationController = [[UIStoryboard storyboardWithName:@"Main"
+	UINavigationController *navigationController =
+				[[UIStoryboard storyboardWithName:@"Main"
 				bundle:[NSBundle mainBundle]]
-				instantiateViewControllerWithIdentifier:@"noteEditNavigationController"];
+				instantiateViewControllerWithIdentifier:
+				@"noteEditNavigationController"];
 	IDNoteViewController *controller = (IDNoteViewController *)
 				navigationController.topViewController;
 	controller.note = [IDNote new];
@@ -116,7 +123,8 @@
 				forControlEvents:UIControlEventTouchUpInside];
 	shareButton.exclusiveTouch = YES;
 	
-	self.toolbarItems = @[[[UIBarButtonItem alloc] initWithCustomView:deleteButton],
+	self.toolbarItems = @[[[UIBarButtonItem alloc]
+				initWithCustomView:deleteButton],
 				[[UIBarButtonItem alloc] initWithBarButtonSystemItem:
 				UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
 				[[UIBarButtonItem alloc] initWithCustomView:shareButton]];
@@ -149,7 +157,8 @@
 				@"imageWhite" : @"image"] forState:UIControlStateNormal];
 	self.changePictureButton.backgroundColor = nil != self.image ?
 				[UIColor colorWithRed:0 green:0 blue:0 alpha:0.5] :
-				[UIColor colorWithRed:225./255 green:231./255 blue:232./255 alpha:0.5];
+				[UIColor colorWithRed:225./255 green:231./255
+				blue:232./255 alpha:0.5];
 	self.noteTextView.userInteractionEnabled = enableEditMode;
 	
 	[self.navigationController setToolbarHidden:enableEditMode animated:YES];
@@ -241,12 +250,15 @@
 		[objectsToShare addObject:self.note.picture];
 	}
  
-	UIActivityViewController *activityController = [[UIActivityViewController alloc]
+	UIActivityViewController *activityController =
+				[[UIActivityViewController alloc]
 				initWithActivityItems:objectsToShare applicationActivities:nil];
  
-	NSArray *excludeActivities = @[UIActivityTypePostToFacebook, UIActivityTypePostToTwitter,
+	NSArray *excludeActivities = @[UIActivityTypePostToFacebook,
+				UIActivityTypePostToTwitter,
 				UIActivityTypePostToWeibo, UIActivityTypeMessage,
-				UIActivityTypeMail, UIActivityTypeCopyToPasteboard, UIActivityTypePrint];
+				UIActivityTypeMail, UIActivityTypeCopyToPasteboard,
+				UIActivityTypePrint];
  
 	activityController.excludedActivityTypes = excludeActivities;
  
@@ -255,7 +267,8 @@
 
 - (IBAction)changePicture:(UIButton *)sender
 {
-	if ([PHPhotoLibrary authorizationStatus] == PHAuthorizationStatusNotDetermined)
+	if ([PHPhotoLibrary authorizationStatus] ==
+				PHAuthorizationStatusNotDetermined)
 	{
 		[PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status)
 		{
@@ -270,12 +283,14 @@
 				}
 				else
 				{
-					UIAlertController *alert = [UIAlertController alertControllerWithTitle:
+					UIAlertController *alert =
+								[UIAlertController alertControllerWithTitle:
 								NSLocalizedString(@"cError", @"") message:
 								NSLocalizedString(@"cNoAccessToPhotos", @"")
 								preferredStyle:UIAlertControllerStyleAlert];
 					
-					[alert addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"cOk", @"")
+					[alert addAction:[UIAlertAction
+								actionWithTitle:NSLocalizedString(@"cOk", @"")
 								style:UIAlertActionStyleDefault handler:nil]];
 					
 					[self presentViewController:alert animated:YES completion:nil];
@@ -285,7 +300,8 @@
 	}
 	else
 	{
-		if ([PHPhotoLibrary authorizationStatus] == PHAuthorizationStatusAuthorized)
+		if ([PHPhotoLibrary authorizationStatus] ==
+					PHAuthorizationStatusAuthorized)
 		{
 			UIImagePickerController *picker = [UIImagePickerController new];
 			picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
@@ -299,7 +315,8 @@
 						NSLocalizedString(@"cNoAccessToPhotos", @"")
 						preferredStyle:UIAlertControllerStyleAlert];
 			
-			[alert addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"cOk", @"")
+			[alert addAction:[UIAlertAction
+						actionWithTitle:NSLocalizedString(@"cOk", @"")
 						style:UIAlertActionStyleDefault handler:nil]];
 			
 			[self presentViewController:alert animated:YES completion:nil];
@@ -322,7 +339,8 @@
 					forState:UIControlStateNormal];
 		self.changePictureButton.backgroundColor =
 					[UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
-		((UIButton *)self.navigationItem.rightBarButtonItem.customView).enabled = YES;
+		((UIButton *)self.navigationItem.rightBarButtonItem.customView).
+					enabled = YES;
 	}
 	[self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -347,10 +365,12 @@
 - (void)textViewDidBeginEditing:(UITextView *)textView
 {
 	if (CGRectGetMaxY(self.noteTextView.frame) >
-				CGRectGetHeight(self.view.bounds) - self.scrollViewBottomConstraint.constant)
+				CGRectGetHeight(self.view.bounds) -
+				self.scrollViewBottomConstraint.constant)
 	{
 		[self.scrollView setContentOffset:CGPointMake(0,
-					CGRectGetMaxY(self.noteTextView.frame) - CGRectGetHeight(self.view.bounds) +
+					CGRectGetMaxY(self.noteTextView.frame) -
+					CGRectGetHeight(self.view.bounds) +
 					self.scrollViewBottomConstraint.constant) animated:YES];
 	}
 }
