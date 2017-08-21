@@ -8,11 +8,15 @@
 
 #import "IDNoteStorage.h"
 #import "IDNote.h"
+#import "IDNoteExpirationTracker.h"
 
 @interface IDNoteStorage ()
 
 @property (nonatomic, strong) NSMutableArray<IDNote *> *mutableNotes;
 @property (nonatomic, strong) NSMutableArray<NSValue *> *observers;
+@property (nonatomic, strong) IDNoteExpirationTracker *expirationTracker;
+
+@property (nonatomic) BOOL tracking;
 
 @end
 
@@ -51,6 +55,16 @@
 	return _observers;
 }
 
+- (IDNoteExpirationTracker *)expirationTracker
+{
+	if (nil == _expirationTracker)
+	{
+		_expirationTracker = [IDNoteExpirationTracker new];
+	}
+	
+	return _expirationTracker;
+}
+
 - (void)addObserver:(id<IDNoteStorageObserver>)delegate
 {
 	@synchronized(self)
@@ -83,12 +97,32 @@
 - (void)saveNote:(IDNote *)note
 {
 	BOOL isNewNote = NO;
-	if (![self.mutableNotes containsObject:note])
+	@synchronized (self)
 	{
-		[self.mutableNotes addObject:note];
-		isNewNote = YES;
+		if (![self.mutableNotes containsObject:note])
+		{
+			[self.mutableNotes addObject:note];
+			isNewNote = YES;
+		}
 	}
 	[self persistNotes];
+	
+	if (isNewNote && self.tracking)
+	{
+		__weak __typeof(self) weakSelf = self;
+		[self.expirationTracker trackNoteExpiration:note withHandler:
+		^{
+			for (NSValue *observerValue in weakSelf.observers)
+			{
+				id<IDNoteStorageObserver> observer = observerValue.nonretainedObjectValue;
+				if ([observer respondsToSelector:@selector(noteStorage:didTrackExpirationOfNote:)])
+				{
+					[(id<IDNoteStorageObserver>)observer noteStorage:weakSelf
+								didTrackExpirationOfNote:note];
+				}
+			}
+		}];
+	}
 	@synchronized(self)
 	{
 		for (NSValue *observerValue in self.observers)
@@ -115,8 +149,13 @@
 
 - (void)removeNote:(IDNote *)note
 {
-	[self.mutableNotes removeObject:note];
+	@synchronized(self)
+	{
+		[self.mutableNotes removeObject:note];
+	}
 	[note cleanUp];
+	[self.expirationTracker stopTrackingForNote:note];
+	
 	@synchronized(self)
 	{
 		for (NSValue *observerValue in self.observers)
@@ -134,10 +173,15 @@
 
 - (void)persistNotes
 {
-	if (self.mutableNotes.count > 0)
+	NSArray *notes = nil;
+	@synchronized (self)
+	{
+		notes = self.mutableNotes;
+	}
+	if (notes.count > 0)
 	{
 		[[NSUserDefaults standardUserDefaults] setObject:
-					[NSKeyedArchiver archivedDataWithRootObject:self.mutableNotes]
+					[NSKeyedArchiver archivedDataWithRootObject:notes]
 					forKey:@"notes"];
 	}
 	else
@@ -152,8 +196,52 @@
 				objectForKey:@"notes"];
 	if (nil != data)
 	{
-		[self.mutableNotes addObjectsFromArray:[NSKeyedUnarchiver
-					unarchiveObjectWithData:data]];
+		@synchronized(self)
+		{
+			[self.mutableNotes addObjectsFromArray:[NSKeyedUnarchiver
+						unarchiveObjectWithData:data]];
+		}
+	}
+}
+
+- (void)startTrackingNoteExpiration
+{
+	if (!self.tracking)
+	{
+		self.tracking = YES;
+		
+		NSArray *notes = nil;
+		@synchronized (self)
+		{
+			notes = self.notes;
+		}
+		
+		for (IDNote *note in notes)
+		{
+			__weak __typeof(self) weakSelf = self;
+			[self.expirationTracker trackNoteExpiration:note withHandler:
+			^{
+				for (NSValue *observerValue in weakSelf.observers)
+				{
+					id<IDNoteStorageObserver> observer = observerValue.nonretainedObjectValue;
+					if ([observer respondsToSelector:@selector(noteStorage:didTrackExpirationOfNote:)])
+					{
+						[(id<IDNoteStorageObserver>)observer noteStorage:weakSelf
+									didTrackExpirationOfNote:note];
+					}
+				}
+			}];
+		}
+	}
+}
+
+- (void)stopTrackingNoteExpiration
+{
+	if (self.tracking)
+	{
+		self.tracking = NO;
+		
+		[self.expirationTracker stopTracking];
 	}
 }
 

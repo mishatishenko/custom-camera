@@ -23,6 +23,9 @@
 - (void)saveNote:(IDNote *)note;
 - (void)removeNote:(IDNote *)note;
 
+- (void)startTrackingNoteExpiration;
+- (void)stopTrackingNoteExpiration;
+
 @end
 
 @protocol IDNoteStorageObserver <NSObject>
@@ -31,5 +34,8 @@
 - (void)noteStorage:(IDNoteStorage *)sender didDeleteNote:(IDNote *)note;
 - (void)noteStorage:(IDNoteStorage *)sender didAddNote:(IDNote *)note;
 - (void)noteStorage:(IDNoteStorage *)sender didUpdateNote:(IDNote *)note;
+
+- (void)noteStorage:(IDNoteStorage *)sender
+			didTrackExpirationOfNote:(IDNote *)note;
 
 @end

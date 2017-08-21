@@ -27,6 +27,7 @@
 		CACBFE5E1F4A4C3800B66330 /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CACBFE5D1F4A4C3800B66330 /* Photos.framework */; };
 		CACBFE651F4A50DE00B66330 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CACBFE671F4A50DE00B66330 /* InfoPlist.strings */; };
 		CACBFE6E1F4AFA4C00B66330 /* UIImageAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = CACBFE6D1F4AFA4C00B66330 /* UIImageAdditions.m */; };
+		CACBFE711F4B02AB00B66330 /* IDNoteExpirationTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = CACBFE701F4B02AB00B66330 /* IDNoteExpirationTracker.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,6 +70,8 @@
 		CACBFE6A1F4A515A00B66330 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CACBFE6C1F4AFA4C00B66330 /* UIImageAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIImageAdditions.h; sourceTree = "<group>"; };
 		CACBFE6D1F4AFA4C00B66330 /* UIImageAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImageAdditions.m; sourceTree = "<group>"; };
+		CACBFE6F1F4B02AB00B66330 /* IDNoteExpirationTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDNoteExpirationTracker.h; sourceTree = "<group>"; };
+		CACBFE701F4B02AB00B66330 /* IDNoteExpirationTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDNoteExpirationTracker.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +160,8 @@
 				CACBFE4F1F4A166600B66330 /* IDNote.m */,
 				CACBFE511F4A17D200B66330 /* IDNoteStorage.h */,
 				CACBFE521F4A17D200B66330 /* IDNoteStorage.m */,
+				CACBFE6F1F4B02AB00B66330 /* IDNoteExpirationTracker.h */,
+				CACBFE701F4B02AB00B66330 /* IDNoteExpirationTracker.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -294,6 +299,7 @@
 				CACBFE531F4A17D200B66330 /* IDNoteStorage.m in Sources */,
 				CACBFE281F49F15D00B66330 /* IDNoteTableViewCell.m in Sources */,
 				CACBFE501F4A166600B66330 /* IDNote.m in Sources */,
+				CACBFE711F4B02AB00B66330 /* IDNoteExpirationTracker.m in Sources */,
 				CACBFE5B1F4A2DCB00B66330 /* IDNoteViewController.m in Sources */,
 				CACBFE371F49FAD900B66330 /* IDDropShadowView.m in Sources */,
 				CACBFE211F49C1D400B66330 /* IDAppDelegate.m in Sources */,

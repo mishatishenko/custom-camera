@@ -18,6 +18,9 @@
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSArray<IDNote *> *notes;
+@property (strong, nonatomic) IDNote *selectedNote;
+
+@property (strong, nonatomic) UIAlertController *expirationAlert;
 
 @end
 
@@ -26,6 +29,8 @@
 - (void)dealloc
 {
 	[[IDNoteStorage sharedStorage] removeObserver:self];
+	[[IDNoteStorage sharedStorage] stopTrackingNoteExpiration];
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)viewDidLoad
@@ -57,6 +62,16 @@
 	infoButton.exclusiveTouch = YES;
 	
 	self.notes = [NSArray arrayWithArray:[[IDNoteStorage sharedStorage] notes]];
+	
+	[[NSNotificationCenter defaultCenter] addObserver:self
+				selector:@selector(applicationDidBecomeActive:)
+				name:UIApplicationDidBecomeActiveNotification object:nil];
+	
+	[[NSNotificationCenter defaultCenter] addObserver:self
+				selector:@selector(applicationWillResignActive:)
+				name:UIApplicationWillResignActiveNotification object:nil];
+	
+	[[IDNoteStorage sharedStorage] startTrackingNoteExpiration];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -85,6 +100,7 @@
 - (void)tableView:(UITableView *)tableView
 			didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+	self.selectedNote = self.notes[indexPath.row];
 	[tableView deselectRowAtIndexPath:indexPath animated:NO];
 	[self presentViewController:[IDNoteViewController
 				noteControllerWithNote:self.notes[indexPath.row]]
@@ -125,8 +141,12 @@
 {
 	self.notes = [NSArray arrayWithArray:[[IDNoteStorage sharedStorage] notes]];
 	[self.tableView reloadData];
+	self.selectedNote = nil;
 	
-	[self dismissViewControllerAnimated:YES completion:nil];
+	if (nil == self.expirationAlert)
+	{
+		[self dismissViewControllerAnimated:YES completion:nil];
+	}
 }
 
 - (void)noteStorage:(IDNoteStorage *)sender didAddNote:(IDNote *)note
@@ -144,6 +164,46 @@
 				withRowAnimation:UITableViewRowAnimationFade];
 	self.notes = [NSArray arrayWithArray:[[IDNoteStorage sharedStorage] notes]];
 	[self.tableView endUpdates];
+}
+
+- (void)noteStorage:(IDNoteStorage *)sender didTrackExpirationOfNote:(IDNote *)note
+{
+	[[IDNoteStorage sharedStorage] removeNote:note];
+	if (nil != self.expirationAlert)
+	{
+		return;
+	}
+	UIAlertController *alert = [UIAlertController alertControllerWithTitle:
+				NSLocalizedString(@"cAttention", @"") message:
+				NSLocalizedString(@"cExpiredDescription", @"")
+				preferredStyle:UIAlertControllerStyleAlert];
+	
+	[alert addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"cOk", @"")
+				style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action)
+	{
+		self.expirationAlert = nil;
+		[self dismissViewControllerAnimated:YES completion:nil];
+	}]];
+	
+	UIViewController *topController = self;
+	
+	while (nil != topController.presentedViewController)
+	{
+		topController = topController.presentedViewController;
+	}
+	
+	self.expirationAlert = alert;
+	[topController presentViewController:alert animated:YES completion:nil];
+}
+
+- (void)applicationDidBecomeActive:(NSNotification *)notification
+{
+	[[IDNoteStorage sharedStorage] startTrackingNoteExpiration];
+}
+
+- (void)applicationWillResignActive:(NSNotification *)notification
+{
+	[[IDNoteStorage sharedStorage] stopTrackingNoteExpiration];
 }
 
 @end
